@@ -7,6 +7,9 @@ on:
     branches: [ main, master ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build-ipa:
     name: Build Smart EV Dashboard iOS (.ipa)
@@ -18,6 +21,7 @@ jobs:
 
       - name: Build Xcode Project
         run: |
+          mkdir -p "${{ github.workspace }}/build/Release-iphoneos"
           cd ios_app/SmartEVDashboard
           xcodebuild build \
                      -project SmartEVDashboard.xcodeproj \
@@ -29,15 +33,22 @@ jobs:
                      CODE_SIGNING_REQUIRED=NO \
                      CODE_SIGNING_ALLOWED=NO \
                      AD_HOC_CODE_SIGNING_ALLOWED=YES \
+                     CONFIGURATION_BUILD_DIR="${{ github.workspace }}/build/Release-iphoneos" \
                      BUILD_DIR="${{ github.workspace }}/build" 2>&1 | tee "${{ github.workspace }}/build_log.txt"
 
       - name: Package .app into .ipa File
         run: |
-          mkdir -p build/Payload
-          cp -r build/Release-iphoneos/SmartEVDashboard.app build/Payload/
-          cd build
+          echo "=== Locating Built .app ==="
+          APP_PATH=$(find "${{ github.workspace }}/build" -name "SmartEVDashboard.app" | head -n 1)
+          echo "Found app at: $APP_PATH"
+          ls -la "$APP_PATH"
+          
+          mkdir -p "${{ github.workspace }}/build/Payload"
+          cp -R "$APP_PATH" "${{ github.workspace }}/build/Payload/"
+          cd "${{ github.workspace }}/build"
           zip -r SmartEVDashboard.ipa Payload
-          echo "✅ Đã tạo xong file SmartEVDashboard.ipa!"
+          ls -lh SmartEVDashboard.ipa
+          echo "✅ Đã tạo xong file SmartEVDashboard.ipa chuẩn!"
 
       - name: Upload .ipa Artifact to GitHub
         uses: actions/upload-artifact@v4
@@ -46,9 +57,13 @@ jobs:
           path: build/SmartEVDashboard.ipa
           retention-days: 30
 
-      - name: Upload Build Log if Failed
-        if: always()
-        uses: actions/upload-artifact@v4
+      - name: Create or Update GitHub Release
+        uses: softprops/action-gh-release@v2
+        if: github.ref == 'refs/heads/main'
         with:
-          name: Xcode-Build-Log
-          path: build_log.txt
+          tag_name: v1.0.0
+          name: "SmartEV Dashboard iOS Release v1.0.0"
+          body: "SmartEV Dashboard for iOS & Apple CarPlay (R-Speedo Style, ANT BMS 32-Cell Monitor, Votol 4-Page Tuner, Dragger 0-60 Timer)."
+          files: build/SmartEVDashboard.ipa
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
