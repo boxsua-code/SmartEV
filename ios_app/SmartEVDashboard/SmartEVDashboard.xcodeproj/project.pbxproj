@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		11A100012C10000000000001 /* SmartEVDashboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartEVDashboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		11P100012C10000000000001 /* SmartEVDashboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartEVDashboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11F000012C10000000000001 /* SmartEVDashboardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartEVDashboardApp.swift; sourceTree = "<group>"; };
 		11F000022C10000000000002 /* CarPlaySceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPlaySceneDelegate.swift; sourceTree = "<group>"; };
 		11F000032C10000000000003 /* ESP32BLEManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESP32BLEManager.swift; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		11G000022C10000000000002 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				11A100012C10000000000001 /* SmartEVDashboard.app */,
+				11P100012C10000000000001 /* SmartEVDashboard.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,7 +128,7 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		11A100012C10000000000001 /* SmartEVDashboard */ = {
+		11T100012C10000000000001 /* SmartEVDashboard */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11A100072C10000000000007;
 			buildPhases = (
@@ -142,7 +142,7 @@
 			);
 			name = SmartEVDashboard;
 			productName = SmartEVDashboard;
-			productReference = 11A100012C10000000000001;
+			productReference = 11P100012C10000000000001;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -155,7 +155,7 @@
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					11A100012C10000000000001 = {
+					11T100012C10000000000001 = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
@@ -173,7 +173,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				11A100012C10000000000001 /* SmartEVDashboard */,
+				11T100012C10000000000001 /* SmartEVDashboard */,
 			);
 		};
 /* End PBXProject section */
