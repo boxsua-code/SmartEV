@@ -48,8 +48,8 @@ struct CockpitView: View {
             .padding(.top, 6)
             .padding(.bottom, 36)
         }
-        .onChange(of: bleManager.telemetry.spd) { newSpeed in
-            handleDraggerTelemetry(speed: newSpeed, power: bleManager.telemetry.p, current: bleManager.telemetry.a)
+        .onReceive(bleManager.$telemetry) { t in
+            handleDraggerTelemetry(speed: t.spd, power: t.p, current: t.a)
         }
     }
     

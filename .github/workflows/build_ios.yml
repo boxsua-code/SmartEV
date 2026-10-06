@@ -19,7 +19,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Build Xcode Project with DerivedData
+      - name: Build Xcode Project
         run: |
           cd ios_app/SmartEVDashboard
           xcodebuild build \
@@ -27,17 +27,18 @@ jobs:
                      -scheme SmartEVDashboard \
                      -sdk iphoneos \
                      -configuration Release \
-                     -derivedDataPath "${{ github.workspace }}/DerivedData" \
+                     -destination 'generic/platform=iOS' \
                      CODE_SIGN_IDENTITY="" \
                      CODE_SIGNING_REQUIRED=NO \
                      CODE_SIGNING_ALLOWED=NO \
-                     AD_HOC_CODE_SIGNING_ALLOWED=YES
+                     AD_HOC_CODE_SIGNING_ALLOWED=YES \
+                     BUILD_DIR="${{ github.workspace }}/build"
 
       - name: Package .app into .ipa File
         run: |
           echo "=== Locating Built .app ==="
-          APP_PATH="${{ github.workspace }}/DerivedData/Build/Products/Release-iphoneos/SmartEVDashboard.app"
-          echo "Checking app at: $APP_PATH"
+          APP_PATH=$(find "${{ github.workspace }}/build" -name "SmartEVDashboard.app" -type d | head -n 1)
+          echo "Found app at: $APP_PATH"
           ls -la "$APP_PATH"
           
           mkdir -p "${{ github.workspace }}/Payload"
@@ -62,5 +63,6 @@ jobs:
           name: "SmartEV Dashboard iOS Release v1.0.0"
           body: "SmartEV Dashboard for iOS & Apple CarPlay (R-Speedo Style, ANT BMS 32-Cell Monitor, Votol 4-Page Tuner, Dragger 0-60 Timer)."
           files: SmartEVDashboard.ipa
+          overwrite: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
