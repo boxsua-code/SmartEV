@@ -21,6 +21,7 @@ jobs:
           cd ios_app/SmartEVDashboard
           xcodebuild build \
                      -project SmartEVDashboard.xcodeproj \
+                     -autocreateSchemes \
                      -scheme SmartEVDashboard \
                      -sdk iphoneos \
                      -configuration Release \
