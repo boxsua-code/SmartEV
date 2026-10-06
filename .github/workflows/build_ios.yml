@@ -19,17 +19,15 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Build and Archive Xcode Project
+      - name: Build Xcode Project with DerivedData
         run: |
-          mkdir -p "${{ github.workspace }}/build"
           cd ios_app/SmartEVDashboard
-          xcodebuild archive \
+          xcodebuild build \
                      -project SmartEVDashboard.xcodeproj \
                      -scheme SmartEVDashboard \
                      -sdk iphoneos \
                      -configuration Release \
-                     -destination 'generic/platform=iOS' \
-                     -archivePath "${{ github.workspace }}/build/SmartEVDashboard.xcarchive" \
+                     -derivedDataPath "${{ github.workspace }}/DerivedData" \
                      CODE_SIGN_IDENTITY="" \
                      CODE_SIGNING_REQUIRED=NO \
                      CODE_SIGNING_ALLOWED=NO \
@@ -37,16 +35,14 @@ jobs:
 
       - name: Package .app into .ipa File
         run: |
-          APP_PATH="${{ github.workspace }}/build/SmartEVDashboard.xcarchive/Products/Applications/SmartEVDashboard.app"
-          if [ ! -d "$APP_PATH" ]; then
-            APP_PATH=$(find "${{ github.workspace }}/build" -name "SmartEVDashboard.app" | head -n 1)
-          fi
-          echo "Found app at: $APP_PATH"
+          echo "=== Locating Built .app ==="
+          APP_PATH="${{ github.workspace }}/DerivedData/Build/Products/Release-iphoneos/SmartEVDashboard.app"
+          echo "Checking app at: $APP_PATH"
           ls -la "$APP_PATH"
           
-          mkdir -p "${{ github.workspace }}/build/Payload"
-          cp -R "$APP_PATH" "${{ github.workspace }}/build/Payload/"
-          cd "${{ github.workspace }}/build"
+          mkdir -p "${{ github.workspace }}/Payload"
+          cp -R "$APP_PATH" "${{ github.workspace }}/Payload/"
+          cd "${{ github.workspace }}"
           zip -r SmartEVDashboard.ipa Payload
           ls -lh SmartEVDashboard.ipa
           echo "✅ Đã tạo xong file SmartEVDashboard.ipa chuẩn!"
@@ -55,7 +51,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: SmartEVDashboard-iOS-IPA
-          path: build/SmartEVDashboard.ipa
+          path: SmartEVDashboard.ipa
           retention-days: 30
 
       - name: Create or Update GitHub Release
@@ -65,6 +61,6 @@ jobs:
           tag_name: v1.0.0
           name: "SmartEV Dashboard iOS Release v1.0.0"
           body: "SmartEV Dashboard for iOS & Apple CarPlay (R-Speedo Style, ANT BMS 32-Cell Monitor, Votol 4-Page Tuner, Dragger 0-60 Timer)."
-          files: build/SmartEVDashboard.ipa
+          files: SmartEVDashboard.ipa
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
