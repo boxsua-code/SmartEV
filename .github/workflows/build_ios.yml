@@ -29,7 +29,7 @@ jobs:
                      CODE_SIGNING_REQUIRED=NO \
                      CODE_SIGNING_ALLOWED=NO \
                      AD_HOC_CODE_SIGNING_ALLOWED=YES \
-                     BUILD_DIR="${{ github.workspace }}/build"
+                     BUILD_DIR="${{ github.workspace }}/build" 2>&1 | tee "${{ github.workspace }}/build_log.txt"
 
       - name: Package .app into .ipa File
         run: |
@@ -45,3 +45,10 @@ jobs:
           name: SmartEVDashboard-iOS-IPA
           path: build/SmartEVDashboard.ipa
           retention-days: 30
+
+      - name: Upload Build Log if Failed
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Xcode-Build-Log
+          path: build_log.txt

@@ -286,11 +286,15 @@ struct SettingNumberRow: View {
                 .foregroundColor(.gray)
             Spacer()
             HStack(spacing: 4) {
-                TextField("", value: $value, format: .number.precision(.fractionLength(1)))
-                    .font(.system(size: 13, weight: .bold, design: .monospaced))
-                    .foregroundColor(.cyan)
-                    .multilineTextAlignment(.trailing)
-                    .frame(width: 60)
+                TextField("", text: Binding(
+                    get: { String(format: "%.1f", value) },
+                    set: { if let v = Float($0) { value = v } }
+                ))
+                .keyboardType(.decimalPad)
+                .font(.system(size: 13, weight: .bold, design: .monospaced))
+                .foregroundColor(.cyan)
+                .multilineTextAlignment(.trailing)
+                .frame(width: 60)
                 if !unit.isEmpty {
                     Text(unit)
                         .font(.system(size: 11, weight: .semibold))
@@ -316,11 +320,15 @@ struct SettingIntRow: View {
                 .foregroundColor(.gray)
             Spacer()
             HStack(spacing: 4) {
-                TextField("", value: $value, format: .number)
-                    .font(.system(size: 13, weight: .bold, design: .monospaced))
-                    .foregroundColor(.cyan)
-                    .multilineTextAlignment(.trailing)
-                    .frame(width: 50)
+                TextField("", text: Binding(
+                    get: { String(value) },
+                    set: { if let v = Int($0) { value = v } }
+                ))
+                .keyboardType(.numberPad)
+                .font(.system(size: 13, weight: .bold, design: .monospaced))
+                .foregroundColor(.cyan)
+                .multilineTextAlignment(.trailing)
+                .frame(width: 50)
                 if !unit.isEmpty {
                     Text(unit)
                         .font(.system(size: 11, weight: .semibold))

@@ -7,6 +7,10 @@ public struct DiscoveredAntDevice: Identifiable, Equatable {
     public let name: String
     public let rssi: Int
     public let peripheral: CBPeripheral
+    
+    public static func == (lhs: DiscoveredAntDevice, rhs: DiscoveredAntDevice) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
 
 /// Trình quản lý kết nối Bluetooth BLE độc lập cho mạch sạc xả pin ANT BMS
