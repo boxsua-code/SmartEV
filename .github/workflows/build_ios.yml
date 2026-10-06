@@ -1,0 +1,49 @@
+name: Build iOS CarPlay IPA
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch: # Cho phép nhấn nút Build thủ công trên GitHub
+
+jobs:
+  build-ipa:
+    name: Build Smart EV Dashboard iOS (.ipa)
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Xcode Version
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: 'latest-stable'
+
+      - name: Build Xcode Project (Unsigned / Ad-hoc IPA)
+        run: |
+          cd ios_app/SmartEVDashboard
+          xcodebuild -project SmartEVDashboard.xcodeproj \
+                     -scheme SmartEVDashboard \
+                     -configuration Release \
+                     -sdk iphoneos \
+                     CODE_SIGN_IDENTITY="" \
+                     CODE_SIGNING_REQUIRED=NO \
+                     CODE_SIGNING_ALLOWED=NO \
+                     clean build
+
+      - name: Package .app into .ipa File
+        run: |
+          mkdir -p build/Payload
+          cp -r ios_app/SmartEVDashboard/build/Release-iphoneos/SmartEVDashboard.app build/Payload/
+          cd build
+          zip -r SmartEVDashboard.ipa Payload
+          echo "✅ Đã tạo xong file SmartEVDashboard.ipa!"
+
+      - name: Upload .ipa Artifact to GitHub
+        uses: actions/upload-artifact@v4
+        with:
+          name: SmartEVDashboard-iOS-IPA
+          path: build/SmartEVDashboard.ipa
+          retention-days: 30

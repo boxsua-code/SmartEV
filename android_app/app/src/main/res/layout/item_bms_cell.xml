@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="3dp"
+    android:padding="6dp"
+    android:background="@drawable/bg_card"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/tvCellIndex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#01"
+        android:textColor="@color/text_gray"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/tvCellVoltage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3.65 V"
+        android:textStyle="bold"
+        android:textColor="@color/ev_cyan"
+        android:textSize="13sp" />
+
+    <ProgressBar
+        android:id="@+id/pbCellVoltage"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginTop="3dp"
+        android:max="4200"
+        android:min="2800"
+        android:progress="3650"
+        android:progressTint="@color/ev_green" />
+
+</LinearLayout>

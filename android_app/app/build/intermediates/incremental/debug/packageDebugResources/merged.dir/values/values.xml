@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="beam_active">#2979FF</color>
+    <color name="bg_dark">#0D1117</color>
+    <color name="card_bg">#161B22</color>
+    <color name="card_stroke">#30363D</color>
+    <color name="ev_blue">#2979FF</color>
+    <color name="ev_cyan">#00E5FF</color>
+    <color name="ev_green">#00E676</color>
+    <color name="ev_orange">#FF9100</color>
+    <color name="ev_purple">#D500F9</color>
+    <color name="ev_red">#FF1744</color>
+    <color name="signal_active">#00E5FF</color>
+    <color name="signal_inactive">#21262D</color>
+    <color name="text_gray">#8B949E</color>
+    <color name="text_muted">#484F58</color>
+    <color name="text_white">#F0F6FC</color>
+    <color name="turn_active">#FFD600</color>
+    <string name="app_name">Smart EV Dashboard</string>
+    <string name="auto_instruction">Khi bạn cắm cáp USB hoặc kết nối không dây tới màn hình xe hơi (Headunit), ứng dụng Smart EV Dashboard sẽ tự động hiển thị trong menu ứng dụng của Android Auto.</string>
+    <string name="auto_status_ready">Sẵn sàng chiếu Digital Dashboard lên màn hình ô tô Android Auto!</string>
+    <string name="auto_title">MÀN HÌNH ANDROID AUTO</string>
+    <string name="bms_cell_max">Cell Cao nhất: #%1$d (%2$d mV)</string>
+    <string name="bms_cell_min">Cell Thấp nhất: #%1$d (%2$d mV)</string>
+    <string name="bms_current">Dòng tức thời: %1$.1f A</string>
+    <string name="bms_delta">Chênh lệch Cell (Delta): %1$d mV</string>
+    <string name="bms_soc">Dung lượng Pin: %1$d%%</string>
+    <string name="bms_temp">Nhiệt độ Pin: T1: %1$d°C | T2: %2$d°C</string>
+    <string name="bms_title">BMS ANT - GIÁM SÁT 32 CELL PIN</string>
+    <string name="bms_v_total">Tổng điện áp: %1$.1f V</string>
+    <string name="btn_connect">KẾT NỐI XE</string>
+    <string name="btn_disconnect">NGẮT KẾT NỐI</string>
+    <string name="btn_grant_notification">CẤP QUYỀN CHỈ ĐƯỜNG</string>
+    <string name="btn_refresh_bms">CẬP NHẬT BMS</string>
+    <string name="btn_save_settings">LƯU CÀI ĐẶT VÀO XE</string>
+    <string name="current_unit">A</string>
+    <string name="msg_settings_saved">Đã gửi dữ liệu cấu hình xuống ESP32-S3 Flash!</string>
+    <string name="notification_service_name">Smart EV Navigation Listener</string>
+    <string name="perm_notification_desc">Cho phép ứng dụng đọc chỉ dẫn rẽ từ Google Maps để đồng bộ lên màn hình OLED của xe.</string>
+    <string name="perm_notification_title">Quyền đọc Google Maps Turn-by-Turn</string>
+    <string name="power_unit">kW</string>
+    <string name="settings_bus_limit">Giới hạn dòng xả pin (Bus Current - A):</string>
+    <string name="settings_drive_mode">Chế độ lái xe (Driving Mode):</string>
+    <string name="settings_phase_limit">Giới hạn dòng cực đại pha (Phase Current - A):</string>
+    <string name="settings_poles_desc">Số cặp cực động cơ (Motor Pole Pairs):</string>
+    <string name="settings_regen">Phanh tái sinh (Regenerative Braking):</string>
+    <string name="settings_tire_desc">Đường kính ngoài lốp xe (mm):</string>
+    <string name="settings_title">CÀI ĐẶT THÔNG SỐ XE (NVS FLASH)</string>
+    <string name="speed_unit">km/h</string>
+    <string name="status_connected">ĐÃ KẾT NỐI ESP32</string>
+    <string name="status_disconnected">MẤT KẾT NỐI XE</string>
+    <string name="status_scanning">ĐANG TÌM KIẾM XE...</string>
+    <string name="tab_auto">Android Auto</string>
+    <string name="tab_bms">BMS Cell</string>
+    <string name="tab_cockpit">Đồng hồ</string>
+    <string name="tab_settings">Cài đặt xe</string>
+    <string name="temp_unit">°C</string>
+    <string name="voltage_unit">V</string>
+    <style name="Theme.SmartEVDashboard" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:statusBarColor">@color/bg_dark</item>
+        <item name="android:navigationBarColor">@color/bg_dark</item>
+        <item name="android:windowBackground">@color/bg_dark</item>
+        <item name="colorPrimary">@color/ev_cyan</item>
+        <item name="colorSecondary">@color/ev_green</item>
+    </style>
+</resources>

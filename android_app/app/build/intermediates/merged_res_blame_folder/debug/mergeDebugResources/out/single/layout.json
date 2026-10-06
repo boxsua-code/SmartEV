@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.smartev.dashboard.app-mergeDebugResources-36:/layout/activity_main.xml",
+        "source": "com.smartev.dashboard.app-main-39:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.smartev.dashboard.app-mergeDebugResources-36:/layout/item_bms_cell.xml",
+        "source": "com.smartev.dashboard.app-main-39:/layout/item_bms_cell.xml"
+    }
+]

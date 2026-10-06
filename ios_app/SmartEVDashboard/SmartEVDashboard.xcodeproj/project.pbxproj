@@ -1,0 +1,341 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		11B000012C10000000000001 /* SmartEVDashboardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F000012C10000000000001; };
+		11B000022C10000000000002 /* CarPlaySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F000022C10000000000002; };
+		11B000032C10000000000003 /* ESP32BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F000032C10000000000003; };
+		11B000042C10000000000004 /* CarPlayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F000042C10000000000004; };
+		11B000052C10000000000005 /* iPhoneDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F000052C10000000000005; };
+		11B000062C10000000000006 /* VehicleTelemetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F000062C10000000000006; };
+		11B000092C10000000000009 /* CarPlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F000092C10000000000009; };
+		11B000102C10000000000010 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F000102C10000000000010; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		11A100012C10000000000001 /* SmartEVDashboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartEVDashboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		11F000012C10000000000001 /* SmartEVDashboardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartEVDashboardApp.swift; sourceTree = "<group>"; };
+		11F000022C10000000000002 /* CarPlaySceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPlaySceneDelegate.swift; sourceTree = "<group>"; };
+		11F000032C10000000000003 /* ESP32BLEManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESP32BLEManager.swift; sourceTree = "<group>"; };
+		11F000042C10000000000004 /* CarPlayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPlayManager.swift; sourceTree = "<group>"; };
+		11F000052C10000000000005 /* iPhoneDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPhoneDashboardView.swift; sourceTree = "<group>"; };
+		11F000062C10000000000006 /* VehicleTelemetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTelemetry.swift; sourceTree = "<group>"; };
+		11F000072C10000000000007 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11F000082C10000000000008 /* Entitlements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		11F000092C10000000000009 /* CarPlay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarPlay.framework; path = System/Library/Frameworks/CarPlay.framework; sourceTree = SDKROOT; };
+		11F000102C10000000000010 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		11A100042C10000000000004 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11B000092C10000000000009 /* CarPlay.framework in Frameworks */,
+				11B000102C10000000000010 /* CoreBluetooth.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		11A100022C10000000000002 = {
+			isa = PBXGroup;
+			children = (
+				11G000012C10000000000001 /* SmartEVDashboard */,
+				11G000022C10000000000002 /* Products */,
+				11G000032C10000000000003 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		11G000012C10000000000001 /* SmartEVDashboard */ = {
+			isa = PBXGroup;
+			children = (
+				11F000072C10000000000007 /* Info.plist */,
+				11F000082C10000000000008 /* Entitlements.plist */,
+				11G000042C10000000000004 /* App */,
+				11G000052C10000000000005 /* BLE */,
+				11G000062C10000000000006 /* CarPlay */,
+				11G000072C10000000000007 /* Models */,
+				11G000082C10000000000008 /* Views */,
+			);
+			path = SmartEVDashboard;
+			sourceTree = "<group>";
+		};
+		11G000042C10000000000004 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				11F000012C10000000000001 /* SmartEVDashboardApp.swift */,
+				11F000022C10000000000002 /* CarPlaySceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		11G000052C10000000000005 /* BLE */ = {
+			isa = PBXGroup;
+			children = (
+				11F000032C10000000000003 /* ESP32BLEManager.swift */,
+			);
+			path = BLE;
+			sourceTree = "<group>";
+		};
+		11G000062C10000000000006 /* CarPlay */ = {
+			isa = PBXGroup;
+			children = (
+				11F000042C10000000000004 /* CarPlayManager.swift */,
+			);
+			path = CarPlay;
+			sourceTree = "<group>";
+		};
+		11G000072C10000000000007 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				11F000062C10000000000006 /* VehicleTelemetry.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		11G000082C10000000000008 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				11F000052C10000000000005 /* iPhoneDashboardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		11G000022C10000000000002 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				11A100012C10000000000001 /* SmartEVDashboard.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		11G000032C10000000000003 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				11F000092C10000000000009 /* CarPlay.framework */,
+				11F000102C10000000000010 /* CoreBluetooth.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		11A100012C10000000000001 /* SmartEVDashboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 11A100072C10000000000007;
+			buildPhases = (
+				11A100032C10000000000003 /* Sources */,
+				11A100042C10000000000004 /* Frameworks */,
+				11A100052C10000000000005 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SmartEVDashboard;
+			productName = SmartEVDashboard;
+			productReference = 11A100012C10000000000001;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		11A100002C10000000000000 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					11A100012C10000000000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = 11A100062C10000000000006;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 11A100022C10000000000002;
+			productRefGroup = 11G000022C10000000000002;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				11A100012C10000000000001 /* SmartEVDashboard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		11A100052C10000000000005 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		11A100032C10000000000003 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11B000012C10000000000001 /* SmartEVDashboardApp.swift in Sources */,
+				11B000022C10000000000002 /* CarPlaySceneDelegate.swift in Sources */,
+				11B000032C10000000000003 /* ESP32BLEManager.swift in Sources */,
+				11B000042C10000000000004 /* CarPlayManager.swift in Sources */,
+				11B000052C10000000000005 /* iPhoneDashboardView.swift in Sources */,
+				11B000062C10000000000006 /* VehicleTelemetry.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		11A100082C10000000000008 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_PROTOTYPES = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		11A100092C10000000000009 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_PROTOTYPES = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		11A1000A2C1000000000000A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SmartEVDashboard/Entitlements.plist;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SmartEVDashboard/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smartev.dashboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		11A1000B2C1000000000000B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SmartEVDashboard/Entitlements.plist;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SmartEVDashboard/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smartev.dashboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		11A100062C10000000000006 /* Build configuration list for PBXProject "SmartEVDashboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				11A100082C10000000000008 /* Debug */,
+				11A100092C10000000000009 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		11A100072C10000000000007 /* Build configuration list for PBXNativeTarget "SmartEVDashboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				11A1000A2C1000000000000A /* Debug */,
+				11A1000B2C1000000000000B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 11A100002C10000000000000 /* Project object */;
+}

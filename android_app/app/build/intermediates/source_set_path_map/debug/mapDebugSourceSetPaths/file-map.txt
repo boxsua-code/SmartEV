@@ -1,0 +1,40 @@
+com.smartev.dashboard.app-lifecycle-livedata-core-ktx-2.8.6-0 E:\.gradle\caches\8.11.1\transforms\00f543764ecdba4eff4dff08c6fcd7a6\transformed\lifecycle-livedata-core-ktx-2.8.6\res
+com.smartev.dashboard.app-lifecycle-viewmodel-savedstate-2.8.6-1 E:\.gradle\caches\8.11.1\transforms\0bdf5db531ba31d9326271729e6765a9\transformed\lifecycle-viewmodel-savedstate-2.8.6\res
+com.smartev.dashboard.app-lifecycle-livedata-core-2.8.6-2 E:\.gradle\caches\8.11.1\transforms\10c1d66d43dca1101cae6f93e834131b\transformed\lifecycle-livedata-core-2.8.6\res
+com.smartev.dashboard.app-emoji2-views-helper-1.3.0-3 E:\.gradle\caches\8.11.1\transforms\12b972eaa042c723fcdb45e2d5abff2b\transformed\emoji2-views-helper-1.3.0\res
+com.smartev.dashboard.app-coordinatorlayout-1.1.0-4 E:\.gradle\caches\8.11.1\transforms\2bcceb7f1e80af7954adf710bedfa112\transformed\coordinatorlayout-1.1.0\res
+com.smartev.dashboard.app-cardview-1.0.0-5 E:\.gradle\caches\8.11.1\transforms\311b44738e1fc42f655f4b7223d56827\transformed\cardview-1.0.0\res
+com.smartev.dashboard.app-appcompat-resources-1.7.0-6 E:\.gradle\caches\8.11.1\transforms\34eb059458a752170b18564330bba8e6\transformed\appcompat-resources-1.7.0\res
+com.smartev.dashboard.app-activity-1.8.0-7 E:\.gradle\caches\8.11.1\transforms\3795fdc900176ee611074b028d1b08d0\transformed\activity-1.8.0\res
+com.smartev.dashboard.app-startup-runtime-1.1.1-8 E:\.gradle\caches\8.11.1\transforms\543a640b7019980660ff615f521752c5\transformed\startup-runtime-1.1.1\res
+com.smartev.dashboard.app-media-1.6.0-9 E:\.gradle\caches\8.11.1\transforms\54e9e26b620b82e385573064d9eda8de\transformed\media-1.6.0\res
+com.smartev.dashboard.app-emoji2-1.3.0-10 E:\.gradle\caches\8.11.1\transforms\5978a484adc7a4a52eb585e20a4ecc6f\transformed\emoji2-1.3.0\res
+com.smartev.dashboard.app-app-1.4.0-11 E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\res
+com.smartev.dashboard.app-app-projected-1.4.0-12 E:\.gradle\caches\8.11.1\transforms\6729d72155a93169098bf70077e7d1df\transformed\app-projected-1.4.0\res
+com.smartev.dashboard.app-viewpager2-1.0.0-13 E:\.gradle\caches\8.11.1\transforms\69473035aca8ec3e4eb58f12f56b7e99\transformed\viewpager2-1.0.0\res
+com.smartev.dashboard.app-core-runtime-2.2.0-14 E:\.gradle\caches\8.11.1\transforms\72d49c6df9265eb5818181c39db79625\transformed\core-runtime-2.2.0\res
+com.smartev.dashboard.app-core-1.13.1-15 E:\.gradle\caches\8.11.1\transforms\75a7cf3a9ea2a11e23777b857d69d1e3\transformed\core-1.13.1\res
+com.smartev.dashboard.app-lifecycle-viewmodel-ktx-2.8.6-16 E:\.gradle\caches\8.11.1\transforms\80d10b7a6152e9b8f710fe1395482863\transformed\lifecycle-viewmodel-ktx-2.8.6\res
+com.smartev.dashboard.app-drawerlayout-1.1.1-17 E:\.gradle\caches\8.11.1\transforms\82a366b2dc524aa9fc15d9c582271f35\transformed\drawerlayout-1.1.1\res
+com.smartev.dashboard.app-lifecycle-runtime-release-18 E:\.gradle\caches\8.11.1\transforms\88dfbc29b04398f07f270513ee57d794\transformed\lifecycle-runtime-release\res
+com.smartev.dashboard.app-transition-1.5.0-19 E:\.gradle\caches\8.11.1\transforms\a2b7189b4ecac2f1894b5cbff4d755fd\transformed\transition-1.5.0\res
+com.smartev.dashboard.app-savedstate-1.2.1-20 E:\.gradle\caches\8.11.1\transforms\a44d0905aaf92efe6eff05d79deb2852\transformed\savedstate-1.2.1\res
+com.smartev.dashboard.app-recyclerview-1.1.0-21 E:\.gradle\caches\8.11.1\transforms\a51ff7c66936ce15df75a5bc0762455c\transformed\recyclerview-1.1.0\res
+com.smartev.dashboard.app-fragment-1.5.4-22 E:\.gradle\caches\8.11.1\transforms\aad7314b028a691b53fe2c9ebc9e3cde\transformed\fragment-1.5.4\res
+com.smartev.dashboard.app-profileinstaller-1.3.1-23 E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\res
+com.smartev.dashboard.app-lifecycle-runtime-ktx-release-24 E:\.gradle\caches\8.11.1\transforms\afa755de8104599520f9dd48ddf1b1c8\transformed\lifecycle-runtime-ktx-release\res
+com.smartev.dashboard.app-core-ktx-1.13.1-25 E:\.gradle\caches\8.11.1\transforms\bb93f1122b27739ab284b0554258d6a4\transformed\core-ktx-1.13.1\res
+com.smartev.dashboard.app-lifecycle-process-2.8.6-26 E:\.gradle\caches\8.11.1\transforms\c24b88a086e90d6ee61868b424fd9812\transformed\lifecycle-process-2.8.6\res
+com.smartev.dashboard.app-appcompat-1.7.0-27 E:\.gradle\caches\8.11.1\transforms\c3a64794785cd8583fdf45744e607dd9\transformed\appcompat-1.7.0\res
+com.smartev.dashboard.app-lifecycle-livedata-2.8.6-28 E:\.gradle\caches\8.11.1\transforms\cc2a3726bb75e1a361e7dd23e260b09a\transformed\lifecycle-livedata-2.8.6\res
+com.smartev.dashboard.app-annotation-experimental-1.4.0-29 E:\.gradle\caches\8.11.1\transforms\d2e9d3d6d827c33d0b243da66a44cbd0\transformed\annotation-experimental-1.4.0\res
+com.smartev.dashboard.app-lifecycle-viewmodel-release-30 E:\.gradle\caches\8.11.1\transforms\e1087b899ca89960015ea37be0a83bee\transformed\lifecycle-viewmodel-release\res
+com.smartev.dashboard.app-material-1.12.0-31 E:\.gradle\caches\8.11.1\transforms\f25e5d58169ca67bf717591dda1540c0\transformed\material-1.12.0\res
+com.smartev.dashboard.app-constraintlayout-2.1.4-32 E:\.gradle\caches\8.11.1\transforms\f6886b5564214ae4cbacbd830158eab2\transformed\constraintlayout-2.1.4\res
+com.smartev.dashboard.app-pngs-33 E:\ESP32\ESP32_Android Auto\android_app\app\build\generated\res\pngs\debug
+com.smartev.dashboard.app-resValues-34 E:\ESP32\ESP32_Android Auto\android_app\app\build\generated\res\resValues\debug
+com.smartev.dashboard.app-packageDebugResources-35 E:\ESP32\ESP32_Android Auto\android_app\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.smartev.dashboard.app-packageDebugResources-36 E:\ESP32\ESP32_Android Auto\android_app\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.smartev.dashboard.app-debug-37 E:\ESP32\ESP32_Android Auto\android_app\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.smartev.dashboard.app-debug-38 E:\ESP32\ESP32_Android Auto\android_app\app\src\debug\res
+com.smartev.dashboard.app-main-39 E:\ESP32\ESP32_Android Auto\android_app\app\src\main\res
