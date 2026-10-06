@@ -5,12 +5,14 @@
     <key>CFBundleDevelopmentRegion</key>
     <string>en</string>
     <key>CFBundleExecutable</key>
-    <string>$(EXECUTABLE_NAME)</string>
+    <string>SmartEVDashboard</string>
     <key>CFBundleIdentifier</key>
     <string>com.smartev.dashboard</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
+    <string>SmartEVDashboard</string>
+    <key>CFBundleDisplayName</key>
     <string>Smart EV Dashboard</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
@@ -40,17 +42,17 @@
                     <key>UISceneClassName</key>
                     <string>CPTemplateApplicationScene</string>
                     <key>UISceneDelegateClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).CarPlaySceneDelegate</string>
+                    <string>SmartEVDashboard.CarPlaySceneDelegate</string>
                 </dict>
             </array>
         </dict>
     </dict>
 
-    <key>UILaunchStoryboardName</key>
-    <string>LaunchScreen</string>
+    <key>UILaunchScreen</key>
+    <dict/>
     <key>UIRequiredDeviceCapabilities</key>
     <array>
-        <string>armv7</string>
+        <string>arm64</string>
         <string>bluetooth-le</string>
     </array>
     <key>UISupportedInterfaceOrientations</key>
