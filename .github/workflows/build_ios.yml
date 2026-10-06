@@ -10,37 +10,32 @@ on:
 jobs:
   build-ipa:
     name: Build Smart EV Dashboard iOS (.ipa)
-    runs-on: macos-14
+    runs-on: macos-latest
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Select Xcode 15
-        run: sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
-
-      - name: Build Xcode Project (Ad-hoc Unsigned)
+      - name: Build Xcode Project
         run: |
           cd ios_app/SmartEVDashboard
-          xcodebuild -project SmartEVDashboard.xcodeproj \
+          xcodebuild build \
+                     -project SmartEVDashboard.xcodeproj \
                      -scheme SmartEVDashboard \
-                     -configuration Release \
                      -sdk iphoneos \
-                     -destination 'generic/platform=iOS' \
-                     -derivedDataPath ./build_derived \
-                     CODE_SIGNING_ALLOWED=NO \
+                     -configuration Release \
+                     CODE_SIGN_IDENTITY="" \
                      CODE_SIGNING_REQUIRED=NO \
-                     clean build
+                     CODE_SIGNING_ALLOWED=NO \
+                     BUILD_DIR=../../build
 
       - name: Package .app into .ipa File
         run: |
           mkdir -p build/Payload
-          APP_PATH=$(find ios_app/SmartEVDashboard/build_derived -name "SmartEVDashboard.app" -type d | head -n 1)
-          echo "Found app at: $APP_PATH"
-          cp -r "$APP_PATH" build/Payload/
+          cp -r build/Release-iphoneos/SmartEVDashboard.app build/Payload/
           cd build
           zip -r SmartEVDashboard.ipa Payload
-          echo "✅ Đã tạo thành công file SmartEVDashboard.ipa!"
+          echo "✅ Đã tạo xong file SmartEVDashboard.ipa!"
 
       - name: Upload .ipa Artifact to GitHub
         uses: actions/upload-artifact@v4
