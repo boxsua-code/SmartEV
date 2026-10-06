@@ -91,3 +91,104 @@
 * **JDK sử dụng:** Dùng JDK 21 tại `C:\Users\boxsu\.jdks\jbr-21.0.11` (Tránh dùng JBR 25 vì không tương thích với Groovy 3 trong Gradle).
 * **Đường dẫn Gradle:** `GRADLE_USER_HOME=E:\.gradle` (Vì ổ C dung lượng rất thấp, ổ E còn >780 GB).
 * **Cơ chế xác nhận:** Người dùng đã giao toàn quyền tự động biên dịch, nạp firmware qua cổng Serial, và build APK mà không cần dừng lại hỏi xác nhận.
+
+---
+
+## 5. KINH NGHIỆM TƯƠNG THÍCH JAMFOXRS & SỬA LỖI TÍN HIỆU NÚT BẤM
+
+* **Tránh lỗi kẹt tín hiệu nút bấm CAN Bus (Latching Bug):**
+  * Trong hàm xử lý gói tin CAN `0x0A010810`, mode byte `m` chứa trạng thái P, R, Phanh, Chân chống.
+  * **Quy tắc bắt buộc:** Các biến boolean trạng thái (`brake`, `sideStand`, `reverse`, `parked`) phải được gán trực tiếp bằng biểu thức điều kiện boolean của chu kỳ hiện tại (Ví dụ: `vd.brake = (m == 0x72 || m == 0xB2);`). Tuyệt đối không viết dạng `if (m == 0x72) vd.brake = true;` mà thiếu nhánh trả về `false`, vì sẽ làm đèn báo phanh/chân chống bị kẹt sáng vĩnh viễn trên màn hình sau lần nhả đầu tiên.
+* **Tương thích BLE Kép (SmartEV + JAMFOXRS):**
+  * App Android được trang bị khả năng nhận diện đa thiết bị: Tên phát sóng `ESP32-SmartDash`, `JAMFOXRS`, `Votol_BLE`, `Votol_TCH`.
+  * Hỗ trợ tự động cả 2 Service GATT:
+    * Nordic UART Service: `6E400001-B5A3-F393-E0A9-E50E24DCCA9E`
+    * JAMFOXRS Service: `4fafc201-1fb5-459e-8fcc-c5c9c331914b` (Telemetry: `beb5483e-36e1-4688-b7f5-ea07361b26a8`)
+  * Trình giải mã JSON thông minh tự động nhận diện cả cú pháp SmartEV (`{"spd":...}`) và JAMFOXRS Fast/Full (`{"r":...,"s":...,"m":...}`). Dù xe đang cắm bo mạch ESP32 đời nào thì App điện thoại và Android Auto đều nhận tín hiệu mượt mà.
+* **Phím tắt mở Cài đặt Android Auto trên điện thoại:**
+  * App đã có nút nhấn mở trực tiếp `com.google.android.gms.car.settings.PROJECTION_SETTINGS` kèm hướng dẫn 4 bước trực quan ngay trên tab Android Auto để người dùng dễ dàng bật *Unknown sources* và tích chọn *Smart EV Dashboard* trong *Customize launcher*.
+
+---
+
+## 6. KINH NGHIỆM KHẮC PHỤC TRIỆT ĐỂ LỖI KẾT NỐI & GHÉP ĐÔI BLUETOOTH BLE
+
+* **Thứ tự gọi Buffer UART trên ESP32:**
+  * `setRxBufferSize(...)` **BẮT BUỘC PHẢI GỌI TRƯỚC** `begin(...)` (Ví dụ: `_serial->setRxBufferSize(256); _serial->begin(baud, ...);`). Nếu gọi sau, ESP32 sẽ báo lỗi nghiêm trọng `HardwareSerial: RX Buffer can't be resized when Serial is already running` và làm ngưng trệ chu trình khởi động.
+* **Nguyên nhân thiết bị BLE bị ẩn tên ("Unknown / Null") do tràn 31 bytes:**
+  * Giới hạn gói tin quảng bá chuẩn BLE là 31 bytes: Cờ Flags (3B) + Tên "ESP32-SmartDash" (17B) + UUID 128-bit (18B) = 38 bytes > 31 bytes! Khi vượt ngưỡng, Bluedroid sẽ tự động cắt bỏ tên, khiến điện thoại chỉ thấy thiết bị vô danh ("Unknown") và ẩn đi trong cài đặt Bluetooth.
+  * **Giải pháp chuẩn:** Đặt Tên thiết bị vào `advData` (Primary Advertisement Packet), và đặt UUID 128-bit vào `scanRespData` (Scan Response Packet). Điện thoại sẽ thấy tên ngay lập tức ở packet đầu tiên.
+* **Cấu hình ghép đôi trực tiếp từ Cài đặt Bluetooth của Điện thoại (Pairing / Bonding):**
+  * Để điện thoại bấm "Ghép đôi" (Pair) thành công từ Settings của máy mà không bị báo lỗi "Mã PIN không đúng / Bị từ chối", ESP32 bắt buộc phải đăng ký đầy đủ cả Encryption Key khởi tạo và Key phản hồi:
+    ```cpp
+    pSecurity->setAuthenticationMode(ESP_LE_AUTH_BOND);
+    pSecurity->setCapability(ESP_IO_CAP_NONE); // "Just Works"
+    pSecurity->setInitEncryptionKey(ESP_BLE_ENC_KEY_MASK | ESP_BLE_ID_KEY_MASK);
+    pSecurity->setRespEncryptionKey(ESP_BLE_ENC_KEY_MASK | ESP_BLE_ID_KEY_MASK); // BẮT BUỘC: Thiếu cờ này Android sẽ từ chối kết nối
+    ```
+  * **LỖI STALE BONDING KHI VỪA FLASH LẠI FIRMWARE:** Khi ESP32 vừa nạp lại firmware (flash làm sạch NVS), khóa bảo mật cũ bị xóa, nhưng điện thoại vẫn giữ khóa ghép đôi cũ. Khi đó điện thoại sẽ báo lỗi "Không thể ghép đôi". **Cách khắc phục:** Vào Cài đặt Bluetooth trên điện thoại > Bấm biểu tượng bánh răng ⚙️ cạnh `ESP32-SmartDash` > Nhấn **BỎ GHÉP ĐÔI (UNPAIR / FORGET)** rồi bấm ghép đôi lại là 100% thành công.
+* **Quyền quét BLE trên Android 12+ (Loại bỏ `neverForLocation`):**
+  * Tuyệt đối không để `android:usesPermissionFlags="neverForLocation"` trong `AndroidManifest.xml` nếu không dùng ScanFilter chặt chẽ, vì Android 12+ sẽ lọc bỏ kết quả quét. Thay vào đó, cấp quyền `ACCESS_FINE_LOCATION` cùng `BLUETOOTH_SCAN` để tìm thấy 100% thiết bị ngoại vi BLE.
+* **Cổng Native USB CDC trên ESP32-S3:**
+  * Bắt buộc có cờ `-DARDUINO_USB_CDC_ON_BOOT=1` và `-DARDUINO_USB_MODE=1` trong `platformio.ini` để luồng `Serial` Arduino xuất trực tiếp qua cổng USB máy tính.
+
+---
+
+## 7. KẾT NỐI VÀ ĐỒNG BỘ PIN ANT BMS QUA BLUETOOTH BLE KHÔNG DÂY
+
+* **Nguyên lý kết nối không dây Pin ANT BMS:**
+  * Pin ANT BMS có mạch Bluetooth riêng, thường phát sóng với tên `ANT-BMS`, `ANT_...`, `VB...`, `JK...`.
+  * Trên Android App: Cung cấp nút **"🔍 TÌM KIẾM BLE PIN ANT"** mở hộp thoại quét sóng BLE xung quanh, hiển thị danh sách thiết bị kèm RSSI và địa chỉ MAC.
+  * Khi người dùng chạm vào thiết bị: App kết nối GATT Service `0000ffe0...`, Characteristic `0000ffe1...`, kích hoạt Notify và tự động ghi nhớ địa chỉ MAC vào `SharedPreferences` để các lần sau tự động kết nối lại khi mở app.
+* **Giải mã gói tin 140 Bytes ANT BMS:**
+  * Header: `0xAA 0x55` (hoặc `0xAA 0x55 0xAA 0xFF`).
+  * Checksum: Tổng từ byte index 4 đến 137 so với `(byte[138] << 8) | byte[139]`.
+  * Trích xuất thông số:
+    * Điện áp tổng Pack Pin: `((byte[4] << 8) | byte[5]) * 0.1f` (V)
+    * Điện áp 32 cell pin: `((byte[6 + i*2] << 8) | byte[7 + i*2])` (mV)
+    * Dòng điện xả/nạp: 4 bytes `byte[70..73]` (Signed Int32 * 0.1f Amps)
+    * Phần trăm pin: `byte[74]` (% SoC)
+    * Nhiệt độ: `byte[93] - 40` (°C), `byte[95] - 40` (°C)
+    * Dung lượng còn lại: 4 bytes `byte[79..82] * 0.000001f` (Ah)
+* **Đồng bộ thời gian thực sang ESP32 qua BLE:**
+  * Khi App nhận dữ liệu pin từ ANT BMS, App tự động đóng gói chuỗi `BMS:vTot:curr:soc:t1:t2:deltaMv:minMv:maxMv` gửi sang ESP32 qua BLE NUS/JAMFOXRS.
+  * ESP32 nhận chuỗi này và nạp thẳng vào snapshot hiển thị của màn hình OLED SSD1306 (Trang 3 BMS và Trang 1, 4).
+  * Nhờ vậy, ngay cả khi người dùng không cắm dây UART2 vào ESP32, màn hình OLED trên xe vẫn hiển thị đầy đủ 100% điện áp, dòng xả, % pin và nhiệt độ pack pin từ ANT BMS!
+
+---
+
+## 8. HƯỚNG DẪN XỬ LÝ LỖI "ỨNG DỤNG BỊ CHẶN" VÀ "APK KHÔNG CÀI ĐƯỢC"
+
+* **Lỗi 1: Google Play Protect báo "Ứng dụng bị chặn" (Blocked by Play Protect):**
+  * **Nguyên nhân:** Do file APK cài trực tiếp (sideload) chưa xuất bản lên Google Play nên Play Protect cảnh báo ứng dụng từ nhà phát triển không xác định.
+  * **Cách xử lý:** Khi pop-up cảnh báo hiện ra, chạm vào dòng chữ nhỏ **"Chi tiết khác" (More details)** > Chọn **"Vẫn cài đặt" (Install anyway)**.
+* **Lỗi 2: Báo lỗi "Không thể cài đặt ứng dụng" (App not installed / Signature Mismatch):**
+  * **Nguyên nhân:** Điện thoại đang cài một bản APK cũ có chữ ký (signature) khác với bản build mới.
+  * **Cách xử lý:** Nhấn giữ biểu tượng ứng dụng **Smart EV Dashboard** cũ trên màn hình điện thoại > Chọn **Gỡ cài đặt (Uninstall)** > Sau đó mở file `SmartEV-Dashboard.apk` mới để cài đặt lại bình thường.
+
+---
+
+## 9. CẤU TRÚC 4 TRANG CÀI ĐẶT NÂNG CAO IC VOTOL TRÊN APP ANDROID (CHUẨN VOTOL-EM-V3 & VOTOLAIO)
+
+* **Thiết kế phân trang điều hướng 3 Màn hình chính của App:**
+  * **Màn 1 (Tab Cockpit):** Bảng đồng hồ công tơ mét kỹ thuật số (Tốc độ km/h, ODO/Trip, RPM, Công suất kW, Cấp số P/R/D/S, Xi-nhan, Đèn pha, Phanh, Chân chống, Bảng chẩn đoán UART Votol Live).
+  * **Màn 2 (Tab BMS):** Pack Pin ANT BMS (Quét & Kết nối BLE Pin ANT, Áp Pack, Dòng xả/nạp, SoC%, Ah, 32 cell pin màu sắc, Delta mV, Min/Max cell, Nhiệt độ T1/T2).
+  * **Màn 3 (Tab Settings):** Cài đặt nâng cao thông số IC Votol chia thành 4 Trang chuẩn giao diện phần mềm VOTOL-EM-V3 Debugging trên PC:
+    * **PAGE 1: NGUỒN PIN & TAY GA (Basic & Throttle)**
+      * *Basic Settings:* Model IC (EM-150/100/50), Điện áp quá áp Overvoltage (V), Cắt áp thấp Undervoltage (V), Cắt áp mềm Soft undervoltage (V), Độ lệch tụt áp Variation, Dòng xả bình Busbar current (A), Dòng pha Phase current (A).
+      * *Throttle voltage set (max 5.5V):* Low protect (V), Start voltage (V), The end of the (V), High protect (V).
+      * *Start setting:* Start torque, Combinative torque, Rate of rise, Rate of decline.
+    * **PAGE 2: CẤP SỐ & CHẾ ĐỘ LÁI (Three-Speed & Sport Mode)**
+      * *Sport mode setup:* Current-Limiting (A), Flux-Weakening mở tua, Automatic logout enablers, Logout time (S), Recovery time (S).
+      * *Three-speed:* 3 Cấp số Low / Mid / High (% Tốc độ & % Dòng điện), Mid/High Flux-Weakening, Kiểu chuyển số (Nút bấm Button / Công tắc Switch), Cấp số mặc định khi mở khóa (Low/Mid/High), Khởi động êm Soft start & cấp độ.
+      * *Hỗ trợ an toàn:* HHC (Khởi hành ngang dốc), HDC (Hỗ trợ đổ đèo), Giới hạn tốc độ xe Speed limit (%).
+    * **PAGE 3: ĐỘNG CƠ & CẢM BIẾN (Motor Setting & Functions)**
+      * *Motor Setting:* Số cặp cực Pole pairs (5 cho QS/Yuma), Đổi màu dây Hall Vàng-Xanh, Đổi màu dây pha Xanh-Lá, Kiểu động cơ Surface-mount / V-type, Góc lệch Hall shift Angle.
+      * *An toàn & Phanh:* Giới hạn tốc độ lùi Reversing speed limit (%), Tỉ lệ phanh điện tử EBS ratio (%), Low brake, Secure boot.
+      * *Output & Tiện ích:* Tín hiệu đồng hồ One-Lin / Hall, Trợ lực dắt xe Moving vehicle booster, Ga tự động Cruise control, Nhận diện áp kép Double-voltage.
+    * **PAGE 4: CỔNG CHỨC NĂNG & THÔNG SỐ XE (Port Settings & Vehicle Display)**
+      * *Port Settings:* Gán chức năng cổng I/O PD0, PB3, PA0, PB2, PC14, PA11... (Brake, Reverse, Park, Anti-theft, Cruise...).
+      * *Vehicle Specs & Display:* Chu vi bánh xe Tire Circumference (mm), Tỉ số truyền Gear Ratio, Độ sáng màn hình OLED xe SSD1306 (10% - 100%).
+    * **Bộ 3 nút thao tác:** `📥 ĐỌC IC (READ)`, `💾 LƯU XUỐNG IC (FLASH)`, `🔄 MẶC ĐỊNH (RESET)`.
+
+
+

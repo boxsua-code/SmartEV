@@ -1,58 +1,62 @@
 [
     {
+        "merged": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-debug-37:\\drawable_bg_signal_turn.xml.flat",
+        "source": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-main-39:\\drawable\\bg_signal_turn.xml"
+    },
+    {
+        "merged": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-debug-37:\\drawable_bg_card.xml.flat",
+        "source": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-main-39:\\drawable\\bg_card.xml"
+    },
+    {
         "merged": "com.smartev.dashboard.app-debug-37:/layout_activity_main.xml.flat",
         "source": "com.smartev.dashboard.app-main-39:/layout/activity_main.xml"
     },
     {
-        "merged": "com.smartev.dashboard.app-debug-37:/drawable_bg_signal_off.xml.flat",
-        "source": "com.smartev.dashboard.app-main-39:/drawable/bg_signal_off.xml"
+        "merged": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-debug-37:\\menu_bottom_nav_menu.xml.flat",
+        "source": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-main-39:\\menu\\bottom_nav_menu.xml"
     },
     {
-        "merged": "com.smartev.dashboard.app-debug-37:/drawable_bg_signal_turn.xml.flat",
-        "source": "com.smartev.dashboard.app-main-39:/drawable/bg_signal_turn.xml"
+        "merged": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-debug-37:\\layout_activity_main.xml.flat",
+        "source": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-main-39:\\layout\\activity_main.xml"
     },
     {
-        "merged": "com.smartev.dashboard.app-debug-37:/menu_bottom_nav_menu.xml.flat",
-        "source": "com.smartev.dashboard.app-main-39:/menu/bottom_nav_menu.xml"
+        "merged": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-debug-37:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-main-39:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.smartev.dashboard.app-debug-37:/mipmap_ic_launcher.xml.flat",
-        "source": "com.smartev.dashboard.app-main-39:/mipmap/ic_launcher.xml"
+        "merged": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-debug-37:\\drawable_bg_signal_off.xml.flat",
+        "source": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-main-39:\\drawable\\bg_signal_off.xml"
     },
     {
-        "merged": "com.smartev.dashboard.app-debug-37:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.smartev.dashboard.app-main-39:/drawable/ic_launcher_foreground.xml"
+        "merged": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-debug-37:\\drawable_bg_signal_beam.xml.flat",
+        "source": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-main-39:\\drawable\\bg_signal_beam.xml"
     },
     {
-        "merged": "com.smartev.dashboard.app-debug-37:/mipmap_ic_launcher_round.xml.flat",
-        "source": "com.smartev.dashboard.app-main-39:/mipmap/ic_launcher_round.xml"
+        "merged": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-debug-37:\\layout_item_bms_cell.xml.flat",
+        "source": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-main-39:\\layout\\item_bms_cell.xml"
     },
     {
-        "merged": "com.smartev.dashboard.app-debug-37:/layout_item_bms_cell.xml.flat",
-        "source": "com.smartev.dashboard.app-main-39:/layout/item_bms_cell.xml"
+        "merged": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-debug-37:\\xml_automotive_app_desc.xml.flat",
+        "source": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-main-39:\\xml\\automotive_app_desc.xml"
     },
     {
-        "merged": "com.smartev.dashboard.app-debug-37:/xml_automotive_app_desc.xml.flat",
-        "source": "com.smartev.dashboard.app-main-39:/xml/automotive_app_desc.xml"
+        "merged": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-debug-37:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-main-39:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "com.smartev.dashboard.app-debug-37:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.smartev.dashboard.app-main-39:/drawable/ic_launcher_background.xml"
+        "merged": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-debug-37:\\mipmap_ic_launcher.xml.flat",
+        "source": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-main-39:\\mipmap\\ic_launcher.xml"
     },
     {
-        "merged": "com.smartev.dashboard.app-debug-37:/drawable_bg_card.xml.flat",
-        "source": "com.smartev.dashboard.app-main-39:/drawable/bg_card.xml"
+        "merged": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-debug-37:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-main-39:\\drawable\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.smartev.dashboard.app-debug-37:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.smartev.dashboard.app-main-39:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-debug-37:\\mipmap_ic_launcher_round.xml.flat",
+        "source": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-main-39:\\mipmap\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.smartev.dashboard.app-debug-37:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.smartev.dashboard.app-main-39:/mipmap-anydpi-v26/ic_launcher.xml"
-    },
-    {
-        "merged": "com.smartev.dashboard.app-debug-37:/drawable_bg_signal_beam.xml.flat",
-        "source": "com.smartev.dashboard.app-main-39:/drawable/bg_signal_beam.xml"
+        "merged": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-debug-37:\\drawable_ic_launcher_background.xml.flat",
+        "source": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-main-39:\\drawable\\ic_launcher_background.xml"
     }
 ]

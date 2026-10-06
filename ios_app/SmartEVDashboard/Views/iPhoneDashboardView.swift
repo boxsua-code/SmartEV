@@ -1,304 +1,162 @@
 import SwiftUI
 
-/// Modern Cyberpunk Digital Cockpit UI for iPhone display
+/// Màn hình chính Master Dashboard với thanh điều hướng 4 Tab phong cách Cyberpunk Glassmorphism
 struct iPhoneDashboardView: View {
     @ObservedObject var bleManager: ESP32BLEManager
+    @StateObject private var bmsManager = AntBmsBleManager()
     @State private var selectedTab = 0
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .bottom) {
             // Background Dark Gradient
             LinearGradient(
-                gradient: Gradient(colors: [Color(red: 0.05, green: 0.07, blue: 0.12), Color.black]),
+                gradient: Gradient(colors: [Color(red: 0.04, green: 0.06, blue: 0.10), Color.black]),
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
             .ignoresSafeArea()
             
-            VStack(spacing: 16) {
-                // Top Header: Status Bar & Connection Indicator
-                headerView
+            VStack(spacing: 0) {
+                // Top App Branding
+                topBrandingBar
                 
-                ScrollView {
-                    VStack(spacing: 20) {
-                        // Main Speed Dial & Gear Badge
-                        speedGaugeView
-                        
-                        // Signal Lights Indicator Bar (Turn Left, Beam, Turn Right, Stand, Brake)
-                        signalsBarView
-                        
-                        // Battery SOC & Power Stats
-                        batteryAndPowerView
-                        
-                        // Temperatures & Electrical Diagnostics Grid
-                        telemetryMetricsGrid
-                        
-                        // Diagnostics & Fault Log Card
-                        faultStatusCard
-                        
-                        // Test Navigation Simulation Buttons
-                        navigationTestSection
-                    }
-                    .padding(.horizontal, 16)
-                    .padding(.bottom, 24)
+                // Nội dung Tab chính
+                TabView(selection: $selectedTab) {
+                    CockpitView(bleManager: bleManager)
+                        .tag(0)
+                    
+                    BmsPackView(bmsManager: bmsManager)
+                        .tag(1)
+                    
+                    VotolSettingsView(bleManager: bleManager)
+                        .tag(2)
+                    
+                    NavigationCarPlayView(bleManager: bleManager)
+                        .tag(3)
+                }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                
+                // Bottom Tab Bar
+                customGlassTabBar
+            }
+        }
+        .onAppear {
+            // Tự động chuyển tiếp dữ liệu Pin ANT BMS sang ESP32 qua BLE
+            bmsManager.onBmsDataSync = { bmsSyncStr in
+                if bleManager.isConnected {
+                    bleManager.sendCommand(bmsSyncStr)
                 }
             }
         }
     }
     
-    // MARK: - Header View
-    private var headerView: some View {
+    // MARK: - Top Branding Bar
+    private var topBrandingBar: some View {
         HStack {
             VStack(alignment: .leading, spacing: 2) {
                 Text("SMART EV DASHBOARD")
-                    .font(.system(size: 14, weight: .bold, design: .monospaced))
+                    .font(.system(size: 14, weight: .black, design: .monospaced))
                     .foregroundColor(.cyan)
-                Text("Apple CarPlay Companion")
-                    .font(.system(size: 11, weight: .medium))
+                Text("iOS Cockpit & Votol Controller")
+                    .font(.system(size: 10, weight: .medium))
                     .foregroundColor(.gray)
             }
+            
             Spacer()
             
-            // BLE Connection Button & Status
-            Button(action: {
-                if bleManager.isConnected {
-                    bleManager.disconnect()
-                } else {
-                    bleManager.startScanning()
-                }
-            }) {
-                HStack(spacing: 6) {
+            // Icon chỉ báo BLE ESP32 & ANT BMS
+            HStack(spacing: 6) {
+                HStack(spacing: 4) {
                     Circle()
-                        .fill(bleManager.isConnected ? Color.green : (bleManager.isScanning ? Color.yellow : Color.red))
-                        .frame(width: 8, height: 8)
-                    Text(bleManager.isConnected ? "ĐÃ KẾT NỐI" : (bleManager.isScanning ? "QUÉT..." : "KẾT NỐI BLE"))
-                        .font(.system(size: 11, weight: .bold))
+                        .fill(bleManager.isConnected ? Color.green : Color.red)
+                        .frame(width: 6, height: 6)
+                    Text("ESP32")
+                        .font(.system(size: 9, weight: .bold, design: .monospaced))
+                        .foregroundColor(bleManager.isConnected ? .green : .gray)
                 }
-                .padding(.horizontal, 12)
-                .padding(.vertical, 6)
-                .background(Capsule().stroke(bleManager.isConnected ? Color.green : Color.cyan, lineWidth: 1))
+                .padding(.horizontal, 6)
+                .padding(.vertical, 3)
+                .background(Capsule().fill(Color.white.opacity(0.05)))
+                
+                HStack(spacing: 4) {
+                    Circle()
+                        .fill(bmsManager.isConnected ? Color.green : Color.red)
+                        .frame(width: 6, height: 6)
+                    Text("BMS")
+                        .font(.system(size: 9, weight: .bold, design: .monospaced))
+                        .foregroundColor(bmsManager.isConnected ? .green : .gray)
+                }
+                .padding(.horizontal, 6)
+                .padding(.vertical, 3)
+                .background(Capsule().fill(Color.white.opacity(0.05)))
             }
         }
         .padding(.horizontal, 16)
-        .padding(.top, 8)
+        .padding(.top, 6)
+        .padding(.bottom, 6)
     }
     
-    // MARK: - Speed Gauge View
-    private var speedGaugeView: some View {
-        ZStack {
-            // Glassmorphism Card Container
+    // MARK: - Custom Glass Tab Bar
+    private var customGlassTabBar: some View {
+        HStack {
+            TabBarButton(icon: "speedometer", title: "Đồng Hồ", isSelected: selectedTab == 0) {
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                    selectedTab = 0
+                }
+            }
+            
+            TabBarButton(icon: "battery.100bolt", title: "Pin ANT", isSelected: selectedTab == 1) {
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                    selectedTab = 1
+                }
+            }
+            
+            TabBarButton(icon: "slider.horizontal.3", title: "Cài Đặt", isSelected: selectedTab == 2) {
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                    selectedTab = 2
+                }
+            }
+            
+            TabBarButton(icon: "location.north.circle.fill", title: "Dẫn Đường", isSelected: selectedTab == 3) {
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                    selectedTab = 3
+                }
+            }
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 10)
+        .background(
             RoundedRectangle(cornerRadius: 24)
-                .fill(Color.white.opacity(0.04))
-                .overlay(RoundedRectangle(cornerRadius: 24).stroke(Color.cyan.opacity(0.2), lineWidth: 1))
-            
-            VStack(spacing: 4) {
-                // Gear Badge (P, ECO, D, SPORT, R)
-                Text(bleManager.telemetry.gear)
-                    .font(.system(size: 22, weight: .heavy, design: .rounded))
-                    .foregroundColor(gearColor(bleManager.telemetry.gear))
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 4)
-                    .background(Capsule().fill(gearColor(bleManager.telemetry.gear).opacity(0.2)))
-                    .padding(.top, 16)
-                
-                // Speed Number
-                HStack(alignment: .firstTextBaseline, spacing: 4) {
-                    Text("\(Int(bleManager.telemetry.spd))")
-                        .font(.system(size: 72, weight: .bold, design: .rounded))
-                        .foregroundColor(.white)
-                    Text("km/h")
-                        .font(.system(size: 18, weight: .semibold))
-                        .foregroundColor(.cyan)
-                }
-                .padding(.vertical, -8)
-                
-                // Estimated Range
-                Text("Tầm hoạt động dự kiến: ~\(bleManager.telemetry.estimatedRangeKm) km")
-                    .font(.system(size: 12, weight: .medium))
-                    .foregroundColor(.gray)
-                    .padding(.bottom, 16)
-            }
-        }
-        .frame(height: 170)
-    }
-    
-    // MARK: - Vehicle Signal Bar View
-    private var signalsBarView: some View {
-        HStack(spacing: 12) {
-            SignalIcon(name: "arrow.left.circle.fill", label: "Trái", isActive: bleManager.telemetry.turn_l == 1, activeColor: .green)
-            SignalIcon(name: "light.beacon.max.fill", label: "Pha", isActive: bleManager.telemetry.beam == 1, activeColor: .blue)
-            SignalIcon(name: "arrow.right.circle.fill", label: "Phải", isActive: bleManager.telemetry.turn_r == 1, activeColor: .green)
-            SignalIcon(name: "exclamationmark.triangle.fill", label: "Phanh", isActive: bleManager.telemetry.brk == 1, activeColor: .red)
-            SignalIcon(name: "minus.circle.fill", label: "Chân chống", isActive: bleManager.telemetry.stand == 1, activeColor: .orange)
-        }
-    }
-    
-    // MARK: - Battery & Power View
-    private var batteryAndPowerView: some View {
-        HStack(spacing: 12) {
-            // Battery SOC Card
-            MetricCard(
-                title: "DUNG LƯỢNG PIN",
-                value: "\(bleManager.telemetry.soc)%",
-                subtitle: "\(String(format: "%.1f", bleManager.telemetry.v)) V",
-                icon: "battery.100bolt",
-                accentColor: bleManager.telemetry.soc > 20 ? .green : .red
-            )
-            
-            // Power Output Card
-            MetricCard(
-                title: "CÔNG SUẤT",
-                value: "\(Int(bleManager.telemetry.p)) W",
-                subtitle: "\(String(format: "%.1f", bleManager.telemetry.a)) A",
-                icon: "bolt.horizontal.circle.fill",
-                accentColor: .yellow
-            )
-        }
-    }
-    
-    // MARK: - Temperatures Grid
-    private var telemetryMetricsGrid: some View {
-        HStack(spacing: 12) {
-            MetricCard(
-                title: "NHIỆT ĐỘ IC",
-                value: "\(bleManager.telemetry.temp_c)°C",
-                subtitle: bleManager.telemetry.temp_c > 75 ? "⚠️ Cao" : "Bình thường",
-                icon: "thermometer.medium",
-                accentColor: bleManager.telemetry.temp_c > 75 ? .red : .cyan
-            )
-            
-            MetricCard(
-                title: "NHIỆT ĐỘ ĐỘNG CƠ",
-                value: "\(bleManager.telemetry.temp_m)°C",
-                subtitle: bleManager.telemetry.temp_m > 80 ? "⚠️ Quá nhiệt" : "Bình thường",
-                icon: "thermometer.high",
-                accentColor: bleManager.telemetry.temp_m > 80 ? .red : .orange
-            )
-        }
-    }
-    
-    // MARK: - Fault Status Card
-    private var faultStatusCard: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                Image(systemName: bleManager.telemetry.err == 0 ? "checkmark.shield.fill" : "exclamationmark.shield.fill")
-                    .foregroundColor(bleManager.telemetry.err == 0 ? .green : .red)
-                Text("CHẨN ĐOÁN HỆ THỐNG VOTOL")
-                    .font(.system(size: 12, weight: .bold, design: .monospaced))
-                    .foregroundColor(.white)
-                Spacer()
-                Text("Hex: 0x\(String(bleManager.telemetry.err, radix: 16).uppercased())")
-                    .font(.system(size: 11, weight: .medium, design: .monospaced))
-                    .foregroundColor(.gray)
-            }
-            
-            Text(bleManager.telemetry.faultSummary)
-                .font(.system(size: 13, weight: .medium))
-                .foregroundColor(bleManager.telemetry.err == 0 ? .green.opacity(0.9) : .red)
-        }
-        .padding(14)
-        .background(RoundedRectangle(cornerRadius: 16).fill(Color.white.opacity(0.04)))
-        .overlay(RoundedRectangle(cornerRadius: 16).stroke(bleManager.telemetry.err == 0 ? Color.green.opacity(0.3) : Color.red.opacity(0.5), lineWidth: 1))
-    }
-    
-    // MARK: - Navigation Test Buttons
-    private var navigationTestSection: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("MÔ PHỎNG DẪN ĐƯỜNG CARPLAY ➔ ESP32 OLED")
-                .font(.system(size: 11, weight: .bold, design: .monospaced))
-                .foregroundColor(.gray)
-            
-            HStack(spacing: 10) {
-                Button("⬅ Rẽ Trái (200m)") {
-                    bleManager.sendNavigationUpdate(icon: "LEFT", distance: "200m", instruction: "Nguyen Hue")
-                }
-                .buttonStyle(TestButtonStyle(color: .blue))
-                
-                Button("⬆ Đi Thẳng (1.5km)") {
-                    bleManager.sendNavigationUpdate(icon: "STRAIGHT", distance: "1.5km", instruction: "Le Loi")
-                }
-                .buttonStyle(TestButtonStyle(color: .green))
-                
-                Button("❌ Xóa") {
-                    bleManager.clearNavigation()
-                }
-                .buttonStyle(TestButtonStyle(color: .red))
-            }
-        }
-    }
-    
-    private func gearColor(_ gear: String) -> Color {
-        switch gear.uppercased() {
-        case "SPORT", "SUPER": return .red
-        case "D", "DRIVE": return .green
-        case "ECO": return .cyan
-        case "R", "REV": return .purple
-        default: return .yellow
-        }
+                .fill(Color(red: 0.08, green: 0.10, blue: 0.16).opacity(0.95))
+                .overlay(RoundedRectangle(cornerRadius: 24).stroke(Color.white.opacity(0.12), lineWidth: 1))
+                .shadow(color: Color.cyan.opacity(0.15), radius: 10, y: -2)
+        )
+        .padding(.horizontal, 16)
+        .padding(.bottom, 10)
     }
 }
 
-// MARK: - Subviews & Styles
-struct SignalIcon: View {
-    let name: String
-    let label: String
-    let isActive: Bool
-    let activeColor: Color
-    
-    var body: some View {
-        VStack(spacing: 4) {
-            Image(systemName: name)
-                .font(.system(size: 20))
-                .foregroundColor(isActive ? activeColor : Color.gray.opacity(0.4))
-            Text(label)
-                .font(.system(size: 10, weight: .medium))
-                .foregroundColor(isActive ? .white : .gray)
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 8)
-        .background(RoundedRectangle(cornerRadius: 12).fill(Color.white.opacity(isActive ? 0.1 : 0.03)))
-    }
-}
-
-struct MetricCard: View {
-    let title: String
-    let value: String
-    let subtitle: String
+// MARK: - Tab Bar Button Component
+struct TabBarButton: View {
     let icon: String
-    let accentColor: Color
+    let title: String
+    let isSelected: Bool
+    let action: () -> Void
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
+        Button(action: action) {
+            VStack(spacing: 4) {
                 Image(systemName: icon)
-                    .foregroundColor(accentColor)
+                    .font(.system(size: 18, weight: isSelected ? .bold : .regular))
+                    .foregroundColor(isSelected ? .cyan : .gray)
+                    .scaleEffect(isSelected ? 1.15 : 1.0)
+                
                 Text(title)
-                    .font(.system(size: 10, weight: .bold, design: .monospaced))
-                    .foregroundColor(.gray)
+                    .font(.system(size: 10, weight: isSelected ? .bold : .medium))
+                    .foregroundColor(isSelected ? .white : .gray)
             }
-            Text(value)
-                .font(.system(size: 26, weight: .bold, design: .rounded))
-                .foregroundColor(.white)
-            Text(subtitle)
-                .font(.system(size: 11, weight: .medium))
-                .foregroundColor(accentColor)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 4)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(14)
-        .background(RoundedRectangle(cornerRadius: 16).fill(Color.white.opacity(0.04)))
-        .overlay(RoundedRectangle(cornerRadius: 16).stroke(accentColor.opacity(0.3), lineWidth: 1))
-    }
-}
-
-struct TestButtonStyle: ButtonStyle {
-    let color: Color
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(.system(size: 11, weight: .bold))
-            .foregroundColor(.white)
-            .padding(.horizontal, 10)
-            .padding(.vertical, 8)
-            .background(RoundedRectangle(cornerRadius: 10).fill(color.opacity(configuration.isPressed ? 0.4 : 0.2)))
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(color, lineWidth: 1))
     }
 }

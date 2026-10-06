@@ -3227,6 +3227,7 @@ id bounceEnd
 id bounceStart
 id btnBleAction
 id btnGrantNotification
+id btnOpenAutoSettings
 id btnRefreshBms
 id btnSaveSettings
 id btnSwapPins

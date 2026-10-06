@@ -39,6 +39,9 @@ public final class ActivityMainBinding implements ViewBinding {
   public final MaterialButton btnGrantNotification;
 
   @NonNull
+  public final MaterialButton btnOpenAutoSettings;
+
+  @NonNull
   public final MaterialButton btnRefreshBms;
 
   @NonNull
@@ -193,21 +196,21 @@ public final class ActivityMainBinding implements ViewBinding {
 
   private ActivityMainBinding(@NonNull ConstraintLayout rootView,
       @NonNull BottomNavigationView bottomNav, @NonNull MaterialButton btnBleAction,
-      @NonNull MaterialButton btnGrantNotification, @NonNull MaterialButton btnRefreshBms,
-      @NonNull MaterialButton btnSaveSettings, @NonNull MaterialButton btnSwapPins,
-      @NonNull MaterialButton btnToggleBaud, @NonNull MaterialButton btnVotolPoll,
-      @NonNull TextInputEditText etBusCurrent, @NonNull TextInputEditText etPhaseCurrent,
-      @NonNull TextInputEditText etPolePairs, @NonNull TextInputEditText etTireSize,
-      @NonNull FrameLayout fragmentContainer, @NonNull TextView indicatorHighBeam,
-      @NonNull TextView indicatorTurnLeft, @NonNull TextView indicatorTurnRight,
-      @NonNull ProgressBar pbSoc, @NonNull RadioButton rbBmsBle, @NonNull RadioButton rbBmsCan,
-      @NonNull RadioButton rbBmsUart, @NonNull RadioButton rbModeEco,
-      @NonNull RadioButton rbModeNormal, @NonNull RadioButton rbModeSport,
-      @NonNull RadioButton rbRegen0, @NonNull RadioButton rbRegen1, @NonNull RadioButton rbRegen2,
-      @NonNull RadioButton rbRegen3, @NonNull RadioGroup rgBmsProtocol,
-      @NonNull RadioGroup rgDriveMode, @NonNull RadioGroup rgRegen,
-      @NonNull RecyclerView rvBmsCells, @NonNull LinearLayout topBar, @NonNull TextView tvBleStatus,
-      @NonNull TextView tvBmsDelta, @NonNull TextView tvBmsMinMax,
+      @NonNull MaterialButton btnGrantNotification, @NonNull MaterialButton btnOpenAutoSettings,
+      @NonNull MaterialButton btnRefreshBms, @NonNull MaterialButton btnSaveSettings,
+      @NonNull MaterialButton btnSwapPins, @NonNull MaterialButton btnToggleBaud,
+      @NonNull MaterialButton btnVotolPoll, @NonNull TextInputEditText etBusCurrent,
+      @NonNull TextInputEditText etPhaseCurrent, @NonNull TextInputEditText etPolePairs,
+      @NonNull TextInputEditText etTireSize, @NonNull FrameLayout fragmentContainer,
+      @NonNull TextView indicatorHighBeam, @NonNull TextView indicatorTurnLeft,
+      @NonNull TextView indicatorTurnRight, @NonNull ProgressBar pbSoc,
+      @NonNull RadioButton rbBmsBle, @NonNull RadioButton rbBmsCan, @NonNull RadioButton rbBmsUart,
+      @NonNull RadioButton rbModeEco, @NonNull RadioButton rbModeNormal,
+      @NonNull RadioButton rbModeSport, @NonNull RadioButton rbRegen0,
+      @NonNull RadioButton rbRegen1, @NonNull RadioButton rbRegen2, @NonNull RadioButton rbRegen3,
+      @NonNull RadioGroup rgBmsProtocol, @NonNull RadioGroup rgDriveMode,
+      @NonNull RadioGroup rgRegen, @NonNull RecyclerView rvBmsCells, @NonNull LinearLayout topBar,
+      @NonNull TextView tvBleStatus, @NonNull TextView tvBmsDelta, @NonNull TextView tvBmsMinMax,
       @NonNull TextView tvBmsProtocolDesc, @NonNull TextView tvBmsSummary,
       @NonNull TextView tvBmsTemp, @NonNull TextView tvControllerTemp, @NonNull TextView tvCurrent,
       @NonNull TextView tvGear, @NonNull TextView tvMotorTemp, @NonNull TextView tvPower,
@@ -219,6 +222,7 @@ public final class ActivityMainBinding implements ViewBinding {
     this.bottomNav = bottomNav;
     this.btnBleAction = btnBleAction;
     this.btnGrantNotification = btnGrantNotification;
+    this.btnOpenAutoSettings = btnOpenAutoSettings;
     this.btnRefreshBms = btnRefreshBms;
     this.btnSaveSettings = btnSaveSettings;
     this.btnSwapPins = btnSwapPins;
@@ -314,6 +318,12 @@ public final class ActivityMainBinding implements ViewBinding {
       id = R.id.btnGrantNotification;
       MaterialButton btnGrantNotification = ViewBindings.findChildViewById(rootView, id);
       if (btnGrantNotification == null) {
+        break missingId;
+      }
+
+      id = R.id.btnOpenAutoSettings;
+      MaterialButton btnOpenAutoSettings = ViewBindings.findChildViewById(rootView, id);
+      if (btnOpenAutoSettings == null) {
         break missingId;
       }
 
@@ -624,14 +634,14 @@ public final class ActivityMainBinding implements ViewBinding {
       }
 
       return new ActivityMainBinding((ConstraintLayout) rootView, bottomNav, btnBleAction,
-          btnGrantNotification, btnRefreshBms, btnSaveSettings, btnSwapPins, btnToggleBaud,
-          btnVotolPoll, etBusCurrent, etPhaseCurrent, etPolePairs, etTireSize, fragmentContainer,
-          indicatorHighBeam, indicatorTurnLeft, indicatorTurnRight, pbSoc, rbBmsBle, rbBmsCan,
-          rbBmsUart, rbModeEco, rbModeNormal, rbModeSport, rbRegen0, rbRegen1, rbRegen2, rbRegen3,
-          rgBmsProtocol, rgDriveMode, rgRegen, rvBmsCells, topBar, tvBleStatus, tvBmsDelta,
-          tvBmsMinMax, tvBmsProtocolDesc, tvBmsSummary, tvBmsTemp, tvControllerTemp, tvCurrent,
-          tvGear, tvMotorTemp, tvPower, tvSoc, tvSpeed, tvUartBaud, tvUartHex, tvUartStats,
-          tvVoltage, tvVotolError, viewAuto, viewBms, viewCockpit, viewSettings);
+          btnGrantNotification, btnOpenAutoSettings, btnRefreshBms, btnSaveSettings, btnSwapPins,
+          btnToggleBaud, btnVotolPoll, etBusCurrent, etPhaseCurrent, etPolePairs, etTireSize,
+          fragmentContainer, indicatorHighBeam, indicatorTurnLeft, indicatorTurnRight, pbSoc,
+          rbBmsBle, rbBmsCan, rbBmsUart, rbModeEco, rbModeNormal, rbModeSport, rbRegen0, rbRegen1,
+          rbRegen2, rbRegen3, rgBmsProtocol, rgDriveMode, rgRegen, rvBmsCells, topBar, tvBleStatus,
+          tvBmsDelta, tvBmsMinMax, tvBmsProtocolDesc, tvBmsSummary, tvBmsTemp, tvControllerTemp,
+          tvCurrent, tvGear, tvMotorTemp, tvPower, tvSoc, tvSpeed, tvUartBaud, tvUartHex,
+          tvUartStats, tvVoltage, tvVotolError, viewAuto, viewBms, viewCockpit, viewSettings);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -785,8 +785,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/auto_status_ready"
-                        android:textColor="@color/ev_green"
+                        android:text="KÍCH HOẠT APP XUẤT HIỆN TRÊN MÀN HÌNH XE"
+                        android:textColor="@color/ev_cyan"
                         android:textStyle="bold"
                         android:textSize="15sp"
                         android:layout_marginBottom="6dp" />
@@ -794,9 +794,52 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/auto_instruction"
-                        android:textColor="@color/text_gray"
-                        android:textSize="13sp" />
+                        android:text="Do Google bảo mật, app cài qua file APK sẽ bị Android Auto ẩn đi mặc định. Bạn chỉ cần thực hiện 4 bước sau là app sẽ hiện 100%:"
+                        android:textColor="@color/text_white"
+                        android:textSize="13sp"
+                        android:layout_marginBottom="10dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnOpenAutoSettings"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="👉 BẤM VÀO ĐÂY ĐỂ MỞ CÀI ĐẶT ANDROID AUTO"
+                        android:backgroundTint="@color/ev_green"
+                        android:textColor="@color/bg_dark"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="12dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1️⃣ Cuộn xuống dưới cùng trang cài đặt vừa mở, chạm 10 lần vào dòng 'Phiên bản' (Version) để bật chế độ Nhà phát triển."
+                        android:textColor="@color/text_white"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="6dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2️⃣ Nhấn dấu 3 chấm góc trên phải > 'Cài đặt cho nhà phát triển' > Tích chọn 'Nguồn không xác định' (Unknown sources) và đặt 'Chế độ ứng dụng' = Nhà phát triển (Developer)."
+                        android:textColor="@color/text_white"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="6dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3️⃣ Quay lại màn hình Cài đặt Android Auto > Vào 'Tùy chỉnh trình khởi chạy' (Customize launcher) > TÍCH CHỌN [Smart EV Dashboard] (Mặc định Android Auto luôn bỏ tích app cài ngoài)."
+                        android:textColor="@color/ev_orange"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="6dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4️⃣ Cắm lại cáp USB vào xe -> Biểu tượng Smart EV Dashboard sẽ xuất hiện ngay lập tức trên màn hình xe hơi!"
+                        android:textColor="@color/ev_cyan"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout

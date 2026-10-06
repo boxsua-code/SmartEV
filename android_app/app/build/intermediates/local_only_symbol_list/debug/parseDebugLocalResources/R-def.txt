@@ -25,6 +25,7 @@ drawable ic_launcher_foreground
 id bottomNav
 id btnBleAction
 id btnGrantNotification
+id btnOpenAutoSettings
 id btnRefreshBms
 id btnSaveSettings
 id btnSwapPins

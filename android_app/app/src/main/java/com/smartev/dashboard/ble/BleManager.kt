@@ -23,7 +23,8 @@ class BleManager private constructor(private val context: Context) {
 
     companion object {
         private const val TAG = "SmartEV_BleManager"
-        val KNOWN_DEVICE_NAMES = listOf("ESP32-SmartDash", "JAMFOXRS", "Votol_BLE", "Votol_TCH", "SmartEV")
+        const val DEVICE_NAME = "ESP32-SmartDash"
+        val KNOWN_DEVICE_NAMES = listOf("ESP32-SmartDash", "JAMFOXRS", "Votol_BLE", "Votol_TCH", "SmartEV", "xe_TCH", "SmartDash")
 
         // 1. Nordic UART Service (NUS) UUIDs (Chuẩn SmartEV)
         val NUS_SERVICE_UUID: UUID = UUID.fromString("6E400001-B5A3-F393-E0A9-E50E24DCCA9E")
@@ -286,4 +287,118 @@ class BleManager private constructor(private val context: Context) {
                     _bmsData.value = BmsData(
                         type = "bms",
                         soc = sc,
-    
+                        voltage = v,
+                        current = a,
+                        temp1 = cTemp,
+                        temp2 = mTemp,
+                        cells = cellsList,
+                        cellMinIndex = minIdx,
+                        cellMinVoltage = if (minVal == 9999) 0 else minVal,
+                        cellMaxIndex = maxIdx,
+                        cellMaxVoltage = maxVal,
+                        deltaMv = delta
+                    )
+                }
+            }
+        } catch (e: Exception) {
+            Log.w(TAG, "Lỗi phân tích JSON từ ESP32: ${e.message} | Payload: $jsonStr")
+        }
+    }
+
+    fun sendCommand(cmd: String): Boolean {
+        val gatt = bluetoothGatt ?: return false
+        val charac = rxCharacteristic ?: return false
+        val bytes = (cmd + "\n").toByteArray(StandardCharsets.UTF_8)
+        charac.value = bytes
+        charac.writeType = BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
+        return gatt.writeCharacteristic(charac)
+    }
+
+    fun sendNavigation(turnIcon: String, distance: String, street: String) {
+        // Định dạng gửi sang ESP32 OLED: NAV:ICON:DIST:STREET
+        val cleanStreet = street.replace(":", " ")
+        sendCommand("NAV:$turnIcon:$distance:$cleanStreet")
+    }
+
+    fun sendMedia(title: String, artist: String) {
+        sendCommand("MEDIA:$title - $artist")
+    }
+
+    fun sendVehicleSettings(settings: VehicleSettings) {
+        scope.launch {
+            sendCommand("SETTING:TIRE:${settings.tireCircumferenceMm}")
+            delay(50)
+            sendCommand("SETTING:POLES:${settings.polePairs}")
+            delay(50)
+            sendCommand("SETTING:BUS_A:${settings.busCurrentLimitA}")
+            delay(50)
+            sendCommand("SETTING:PHASE_A:${settings.phaseCurrentLimitA}")
+            delay(50)
+            sendCommand("SETTING:OVER_V:${settings.overvoltageV}")
+            delay(50)
+            sendCommand("SETTING:UNDER_V:${settings.undervoltageV}")
+            delay(50)
+            sendCommand("SETTING:SPORT_A:${settings.sportCurrentLimitA}")
+            delay(50)
+            sendCommand("SETTING:FLUX:${settings.sportFluxWeakening}")
+            delay(50)
+            sendCommand("SETTING:EBS:${settings.ebsRatio}")
+            delay(50)
+            sendCommand("SETTING:GEAR_RATIO:${settings.gearRatio}")
+            delay(50)
+            sendCommand("SETTING:BRIGHT:${settings.oledBrightness}")
+            delay(50)
+            sendCommand("SETTING:SAVE:1")
+            Log.i(TAG, "Đã gửi toàn bộ gói cấu hình xe 4 trang Votol xuống ESP32-S3 Flash!")
+        }
+    }
+
+    fun requestBmsUpdate() {
+        sendCommand("REQ:BMS")
+    }
+
+    fun sendVotolPoll() {
+        sendCommand("POLL_VOTOL")
+    }
+
+    fun setVotolBaud(baud: Long) {
+        sendCommand("SET_BAUD:$baud")
+    }
+
+    fun swapUartPins() {
+        sendCommand("SWAP_PINS")
+    }
+
+    fun syncPhoneTimeToVehicle() {
+        val cal = Calendar.getInstance()
+        val y = cal.get(Calendar.YEAR)
+        val m = cal.get(Calendar.MONTH) + 1
+        val d = cal.get(Calendar.DAY_OF_MONTH)
+        val h = cal.get(Calendar.HOUR_OF_DAY)
+        val min = cal.get(Calendar.MINUTE)
+        val s = cal.get(Calendar.SECOND)
+        val timeCmd = String.format(Locale.US, "TIME:%04d:%02d:%02d:%02d:%02d:%02d", y, m, d, h, min, s)
+        scope.launch {
+            delay(500) // Đợi 500ms để kênh BLE Notification & RX ổn định
+            sendCommand(timeCmd)
+            Log.i(TAG, "Đã tự động gửi thời gian chuẩn từ điện thoại xuống ESP32 RTC: $timeCmd")
+        }
+    }
+
+    fun syncBmsDataToEsp32(bms: BmsData) {
+        _bmsData.value = bms
+        val cmd = String.format(
+            Locale.US,
+            "BMS:%.1f:%.1f:%d:%d:%d:%d:%d:%d",
+            bms.voltage,
+            bms.current,
+            bms.soc,
+            bms.temp1,
+            bms.temp2,
+            bms.deltaMv,
+            bms.cellMinVoltage,
+            bms.cellMaxVoltage
+        )
+        sendCommand(cmd)
+    }
+}

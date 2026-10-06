@@ -6,7 +6,7 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="26"
-9        android:targetSdkVersion="35" />
+9        android:targetSdkVersion="34" />
 10
 11    <!-- Bluetooth Permissions -->
 12    <uses-permission
@@ -21,271 +21,268 @@
 16-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:7:22-71
 17        android:maxSdkVersion="30" />
 17-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:7:72-98
-18    <uses-permission
-18-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:8:5-140
-19        android:name="android.permission.BLUETOOTH_SCAN"
-19-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:8:22-70
-20        android:usesPermissionFlags="neverForLocation" />
-20-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:8:71-117
-21    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
-21-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:9:5-96
-21-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:9:22-73
-22    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-22-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:10:5-79
-22-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:10:22-76
-23    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-23-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:11:5-81
-23-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:11:22-78
-24
-25    <!-- Foreground Service & Notification Permissions -->
-26    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-26-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:14:5-77
-26-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:14:22-74
-27    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE" />
-27-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:15:5-129
-27-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:15:22-91
-28    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-28-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:16:5-104
-28-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:16:22-74
-29
-30    <!-- Car App Templates Permission -->
-31    <uses-permission android:name="androidx.car.app.MAP_TEMPLATES" />
-31-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:19:5-70
-31-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:19:22-67
-32
-33    <!-- Features -->
-34    <uses-feature
-34-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:22:5-90
-35        android:name="android.hardware.bluetooth_le"
-35-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:22:19-63
-36        android:required="true" />
-36-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:22:64-87
-37    <uses-feature
-37-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:23:5-94
-38        android:name="android.hardware.type.automotive"
-38-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:23:19-66
-39        android:required="false" />
-39-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:23:67-91
-40
-41    <queries>
-41-->[androidx.car.app:app:1.4.0] E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\AndroidManifest.xml:23:5-28:15
-42        <provider
-42-->[androidx.car.app:app:1.4.0] E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\AndroidManifest.xml:24:9-27:43
-43            android:name="androidx.car.app.connection.provider"
-43-->[androidx.car.app:app:1.4.0] E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\AndroidManifest.xml:25:13-64
-44            android:authorities="androidx.car.app.connection" />
-44-->[androidx.car.app:app:1.4.0] E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\AndroidManifest.xml:26:13-62
-45    </queries>
-46
-47    <permission
-47-->[androidx.core:core:1.13.1] E:\.gradle\caches\8.11.1\transforms\75a7cf3a9ea2a11e23777b857d69d1e3\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
-48        android:name="com.smartev.dashboard.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-48-->[androidx.core:core:1.13.1] E:\.gradle\caches\8.11.1\transforms\75a7cf3a9ea2a11e23777b857d69d1e3\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
-49        android:protectionLevel="signature" />
-49-->[androidx.core:core:1.13.1] E:\.gradle\caches\8.11.1\transforms\75a7cf3a9ea2a11e23777b857d69d1e3\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+18    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+18-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:8:5-93
+18-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:8:22-70
+19    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+19-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:9:5-96
+19-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:9:22-73
+20    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+20-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:10:5-79
+20-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:10:22-76
+21    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+21-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:11:5-81
+21-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:11:22-78
+22
+23    <!-- Foreground Service & Notification Permissions -->
+24    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+24-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:14:5-77
+24-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:14:22-74
+25    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE" />
+25-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:15:5-129
+25-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:15:22-91
+26    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+26-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:16:5-104
+26-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:16:22-74
+27
+28    <!-- Car App Templates Permission -->
+29    <uses-permission android:name="androidx.car.app.MAP_TEMPLATES" />
+29-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:19:5-70
+29-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:19:22-67
+30
+31    <!-- Features -->
+32    <uses-feature
+32-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:22:5-91
+33        android:name="android.hardware.bluetooth_le"
+33-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:22:19-63
+34        android:required="false" />
+34-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:22:64-88
+35    <uses-feature
+35-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:23:5-94
+36        android:name="android.hardware.type.automotive"
+36-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:23:19-66
+37        android:required="false" />
+37-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:23:67-91
+38
+39    <queries>
+39-->[androidx.car.app:app:1.4.0] E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\AndroidManifest.xml:23:5-28:15
+40        <provider
+40-->[androidx.car.app:app:1.4.0] E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\AndroidManifest.xml:24:9-27:43
+41            android:name="androidx.car.app.connection.provider"
+41-->[androidx.car.app:app:1.4.0] E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\AndroidManifest.xml:25:13-64
+42            android:authorities="androidx.car.app.connection" />
+42-->[androidx.car.app:app:1.4.0] E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\AndroidManifest.xml:26:13-62
+43    </queries>
+44
+45    <permission
+45-->[androidx.core:core:1.13.1] E:\.gradle\caches\8.11.1\transforms\75a7cf3a9ea2a11e23777b857d69d1e3\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+46        android:name="com.smartev.dashboard.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+46-->[androidx.core:core:1.13.1] E:\.gradle\caches\8.11.1\transforms\75a7cf3a9ea2a11e23777b857d69d1e3\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+47        android:protectionLevel="signature" />
+47-->[androidx.core:core:1.13.1] E:\.gradle\caches\8.11.1\transforms\75a7cf3a9ea2a11e23777b857d69d1e3\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+48
+49    <uses-permission android:name="com.smartev.dashboard.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+49-->[androidx.core:core:1.13.1] E:\.gradle\caches\8.11.1\transforms\75a7cf3a9ea2a11e23777b857d69d1e3\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+49-->[androidx.core:core:1.13.1] E:\.gradle\caches\8.11.1\transforms\75a7cf3a9ea2a11e23777b857d69d1e3\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
 50
-51    <uses-permission android:name="com.smartev.dashboard.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-51-->[androidx.core:core:1.13.1] E:\.gradle\caches\8.11.1\transforms\75a7cf3a9ea2a11e23777b857d69d1e3\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
-51-->[androidx.core:core:1.13.1] E:\.gradle\caches\8.11.1\transforms\75a7cf3a9ea2a11e23777b857d69d1e3\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
-52
-53    <application
-53-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:25:5-77:19
-54        android:name="com.smartev.dashboard.SmartEvApplication"
-54-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:26:9-43
-55        android:allowBackup="true"
-55-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:27:9-35
-56        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-56-->[androidx.core:core:1.13.1] E:\.gradle\caches\8.11.1\transforms\75a7cf3a9ea2a11e23777b857d69d1e3\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
-57        android:debuggable="true"
-58        android:extractNativeLibs="false"
-59        android:icon="@mipmap/ic_launcher"
-59-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:28:9-43
-60        android:label="@string/app_name"
-60-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:29:9-41
-61        android:roundIcon="@mipmap/ic_launcher_round"
-61-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:30:9-54
-62        android:supportsRtl="true"
-62-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:31:9-35
-63        android:theme="@style/Theme.SmartEVDashboard" >
-63-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:32:9-54
-64
-65        <!-- Android Auto Support Meta-data -->
-66        <meta-data
-66-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:35:9-37:33
-67            android:name="androidx.car.app.minCarApiLevel"
-67-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:36:13-59
-68            android:value="1" />
-68-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:37:13-30
-69        <meta-data
-69-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:38:9-40:59
-70            android:name="com.google.android.gms.car.application"
-70-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:39:13-66
-71            android:resource="@xml/automotive_app_desc" />
-71-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:40:13-56
-72
-73        <!-- Main Phone UI Activity -->
-74        <activity
-74-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:43:9-52:20
-75            android:name="com.smartev.dashboard.MainActivity"
-75-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:44:13-41
-76            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
-76-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:46:13-87
-77            android:exported="true"
-77-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:45:13-36
-78            android:screenOrientation="portrait" >
-78-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:47:13-49
-79            <intent-filter>
-79-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:48:13-51:29
-80                <action android:name="android.intent.action.MAIN" />
-80-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:49:17-69
-80-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:49:25-66
-81
-82                <category android:name="android.intent.category.LAUNCHER" />
-82-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:50:17-77
-82-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:50:27-74
-83            </intent-filter>
-84        </activity>
-85
-86        <!-- Android Auto Car App Service -->
-87        <service
-87-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:55:9-64:19
-88            android:name="com.smartev.dashboard.car.EvCarAppService"
-88-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:56:13-48
-89            android:exported="true"
-89-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:59:13-36
-90            android:icon="@mipmap/ic_launcher"
-90-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:58:13-47
-91            android:label="@string/app_name" >
-91-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:57:13-45
-92            <intent-filter>
-92-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:60:13-63:29
-93                <action android:name="androidx.car.app.CarAppService" />
-93-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:61:17-73
-93-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:61:25-70
-94
-95                <category android:name="androidx.car.app.category.POI" />
-95-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:62:17-74
-95-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:62:27-71
-96            </intent-filter>
-97        </service>
-98
-99        <!-- Google Maps Turn-by-Turn & Media Notification Listener Service -->
-100        <service
-100-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:67:9-75:19
-101            android:name="com.smartev.dashboard.service.MapNotificationService"
-101-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:68:13-59
-102            android:exported="true"
-102-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:71:13-36
-103            android:label="@string/notification_service_name"
-103-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:69:13-62
-104            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" >
-104-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:70:13-87
-105            <intent-filter>
-105-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:72:13-74:29
-106                <action android:name="android.service.notification.NotificationListenerService" />
-106-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:73:17-99
-106-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:73:25-96
-107            </intent-filter>
-108        </service>
-109        <service
-109-->[androidx.car.app:app-projected:1.4.0] E:\.gradle\caches\8.11.1\transforms\6729d72155a93169098bf70077e7d1df\transformed\app-projected-1.4.0\AndroidManifest.xml:24:9-34:19
-110            android:name="androidx.car.app.CarAppMetadataHolderService"
-110-->[androidx.car.app:app-projected:1.4.0] E:\.gradle\caches\8.11.1\transforms\6729d72155a93169098bf70077e7d1df\transformed\app-projected-1.4.0\AndroidManifest.xml:25:13-72
-111            android:enabled="false"
-111-->[androidx.car.app:app-projected:1.4.0] E:\.gradle\caches\8.11.1\transforms\6729d72155a93169098bf70077e7d1df\transformed\app-projected-1.4.0\AndroidManifest.xml:26:13-36
-112            android:exported="false"
-112-->[androidx.car.app:app-projected:1.4.0] E:\.gradle\caches\8.11.1\transforms\6729d72155a93169098bf70077e7d1df\transformed\app-projected-1.4.0\AndroidManifest.xml:27:13-37
-113            android:process="" >
-113-->[androidx.car.app:app-projected:1.4.0] E:\.gradle\caches\8.11.1\transforms\6729d72155a93169098bf70077e7d1df\transformed\app-projected-1.4.0\AndroidManifest.xml:28:13-31
-114            <meta-data
-114-->[androidx.car.app:app-projected:1.4.0] E:\.gradle\caches\8.11.1\transforms\6729d72155a93169098bf70077e7d1df\transformed\app-projected-1.4.0\AndroidManifest.xml:31:13-33:89
-115                android:name="androidx.car.app.CarAppMetadataHolderService.CAR_HARDWARE_MANAGER"
-115-->[androidx.car.app:app-projected:1.4.0] E:\.gradle\caches\8.11.1\transforms\6729d72155a93169098bf70077e7d1df\transformed\app-projected-1.4.0\AndroidManifest.xml:32:17-97
-116                android:value="androidx.car.app.hardware.ProjectedCarHardwareManager" />
-116-->[androidx.car.app:app-projected:1.4.0] E:\.gradle\caches\8.11.1\transforms\6729d72155a93169098bf70077e7d1df\transformed\app-projected-1.4.0\AndroidManifest.xml:33:17-86
-117        </service>
-118
-119        <activity
-119-->[androidx.car.app:app:1.4.0] E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\AndroidManifest.xml:31:9-34:75
-120            android:name="androidx.car.app.CarAppPermissionActivity"
-120-->[androidx.car.app:app:1.4.0] E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\AndroidManifest.xml:32:13-69
-121            android:exported="false"
-121-->[androidx.car.app:app:1.4.0] E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\AndroidManifest.xml:33:13-37
-122            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-122-->[androidx.car.app:app:1.4.0] E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\AndroidManifest.xml:34:13-72
-123
-124        <receiver
-124-->[androidx.car.app:app:1.4.0] E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\AndroidManifest.xml:36:9-38:40
-125            android:name="androidx.car.app.notification.CarAppNotificationBroadcastReceiver"
-125-->[androidx.car.app:app:1.4.0] E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\AndroidManifest.xml:37:13-93
-126            android:exported="false" />
-126-->[androidx.car.app:app:1.4.0] E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\AndroidManifest.xml:38:13-37
-127
-128        <provider
-128-->[androidx.emoji2:emoji2:1.3.0] E:\.gradle\caches\8.11.1\transforms\5978a484adc7a4a52eb585e20a4ecc6f\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
-129            android:name="androidx.startup.InitializationProvider"
-129-->[androidx.emoji2:emoji2:1.3.0] E:\.gradle\caches\8.11.1\transforms\5978a484adc7a4a52eb585e20a4ecc6f\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
-130            android:authorities="com.smartev.dashboard.androidx-startup"
-130-->[androidx.emoji2:emoji2:1.3.0] E:\.gradle\caches\8.11.1\transforms\5978a484adc7a4a52eb585e20a4ecc6f\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
-131            android:exported="false" >
-131-->[androidx.emoji2:emoji2:1.3.0] E:\.gradle\caches\8.11.1\transforms\5978a484adc7a4a52eb585e20a4ecc6f\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
-132            <meta-data
-132-->[androidx.emoji2:emoji2:1.3.0] E:\.gradle\caches\8.11.1\transforms\5978a484adc7a4a52eb585e20a4ecc6f\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
-133                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-133-->[androidx.emoji2:emoji2:1.3.0] E:\.gradle\caches\8.11.1\transforms\5978a484adc7a4a52eb585e20a4ecc6f\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
-134                android:value="androidx.startup" />
-134-->[androidx.emoji2:emoji2:1.3.0] E:\.gradle\caches\8.11.1\transforms\5978a484adc7a4a52eb585e20a4ecc6f\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
-135            <meta-data
-135-->[androidx.lifecycle:lifecycle-process:2.8.6] E:\.gradle\caches\8.11.1\transforms\c24b88a086e90d6ee61868b424fd9812\transformed\lifecycle-process-2.8.6\AndroidManifest.xml:29:13-31:52
-136                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-136-->[androidx.lifecycle:lifecycle-process:2.8.6] E:\.gradle\caches\8.11.1\transforms\c24b88a086e90d6ee61868b424fd9812\transformed\lifecycle-process-2.8.6\AndroidManifest.xml:30:17-78
-137                android:value="androidx.startup" />
-137-->[androidx.lifecycle:lifecycle-process:2.8.6] E:\.gradle\caches\8.11.1\transforms\c24b88a086e90d6ee61868b424fd9812\transformed\lifecycle-process-2.8.6\AndroidManifest.xml:31:17-49
-138            <meta-data
-138-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
-139                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-139-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
-140                android:value="androidx.startup" />
-140-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
-141        </provider>
-142
-143        <receiver
-143-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
-144            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-144-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
-145            android:directBootAware="false"
-145-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
-146            android:enabled="true"
-146-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
-147            android:exported="true"
-147-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
-148            android:permission="android.permission.DUMP" >
-148-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
-149            <intent-filter>
-149-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
-150                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-150-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
-150-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
-151            </intent-filter>
-152            <intent-filter>
-152-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
-153                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-153-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
-153-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
-154            </intent-filter>
-155            <intent-filter>
-155-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
-156                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-156-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
-156-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
-157            </intent-filter>
-158            <intent-filter>
-158-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
-159                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-159-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
-159-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
-160            </intent-filter>
-161        </receiver>
-162    </application>
-163
-164</manifest>
+51    <application
+51-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:25:5-77:19
+52        android:name="com.smartev.dashboard.SmartEvApplication"
+52-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:26:9-43
+53        android:allowBackup="true"
+53-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:27:9-35
+54        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+54-->[androidx.core:core:1.13.1] E:\.gradle\caches\8.11.1\transforms\75a7cf3a9ea2a11e23777b857d69d1e3\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+55        android:debuggable="true"
+56        android:extractNativeLibs="false"
+57        android:icon="@mipmap/ic_launcher"
+57-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:28:9-43
+58        android:label="@string/app_name"
+58-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:29:9-41
+59        android:roundIcon="@mipmap/ic_launcher_round"
+59-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:30:9-54
+60        android:supportsRtl="true"
+60-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:31:9-35
+61        android:theme="@style/Theme.SmartEVDashboard" >
+61-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:32:9-54
+62
+63        <!-- Android Auto Support Meta-data -->
+64        <meta-data
+64-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:35:9-37:33
+65            android:name="androidx.car.app.minCarApiLevel"
+65-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:36:13-59
+66            android:value="1" />
+66-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:37:13-30
+67        <meta-data
+67-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:38:9-40:59
+68            android:name="com.google.android.gms.car.application"
+68-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:39:13-66
+69            android:resource="@xml/automotive_app_desc" />
+69-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:40:13-56
+70
+71        <!-- Main Phone UI Activity -->
+72        <activity
+72-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:43:9-52:20
+73            android:name="com.smartev.dashboard.MainActivity"
+73-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:44:13-41
+74            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+74-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:46:13-87
+75            android:exported="true"
+75-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:45:13-36
+76            android:screenOrientation="portrait" >
+76-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:47:13-49
+77            <intent-filter>
+77-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:48:13-51:29
+78                <action android:name="android.intent.action.MAIN" />
+78-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:49:17-69
+78-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:49:25-66
+79
+80                <category android:name="android.intent.category.LAUNCHER" />
+80-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:50:17-77
+80-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:50:27-74
+81            </intent-filter>
+82        </activity>
+83
+84        <!-- Android Auto Car App Service -->
+85        <service
+85-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:55:9-64:19
+86            android:name="com.smartev.dashboard.car.EvCarAppService"
+86-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:56:13-48
+87            android:exported="true"
+87-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:59:13-36
+88            android:icon="@mipmap/ic_launcher"
+88-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:58:13-47
+89            android:label="@string/app_name" >
+89-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:57:13-45
+90            <intent-filter>
+90-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:60:13-63:29
+91                <action android:name="androidx.car.app.CarAppService" />
+91-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:61:17-73
+91-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:61:25-70
+92
+93                <category android:name="androidx.car.app.category.POI" />
+93-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:62:17-74
+93-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:62:27-71
+94            </intent-filter>
+95        </service>
+96
+97        <!-- Google Maps Turn-by-Turn & Media Notification Listener Service -->
+98        <service
+98-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:67:9-75:19
+99            android:name="com.smartev.dashboard.service.MapNotificationService"
+99-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:68:13-59
+100            android:exported="true"
+100-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:71:13-36
+101            android:label="@string/notification_service_name"
+101-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:69:13-62
+102            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" >
+102-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:70:13-87
+103            <intent-filter>
+103-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:72:13-74:29
+104                <action android:name="android.service.notification.NotificationListenerService" />
+104-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:73:17-99
+104-->E:\ESP32\ESP32_Android Auto\android_app\app\src\main\AndroidManifest.xml:73:25-96
+105            </intent-filter>
+106        </service>
+107        <service
+107-->[androidx.car.app:app-projected:1.4.0] E:\.gradle\caches\8.11.1\transforms\6729d72155a93169098bf70077e7d1df\transformed\app-projected-1.4.0\AndroidManifest.xml:24:9-34:19
+108            android:name="androidx.car.app.CarAppMetadataHolderService"
+108-->[androidx.car.app:app-projected:1.4.0] E:\.gradle\caches\8.11.1\transforms\6729d72155a93169098bf70077e7d1df\transformed\app-projected-1.4.0\AndroidManifest.xml:25:13-72
+109            android:enabled="false"
+109-->[androidx.car.app:app-projected:1.4.0] E:\.gradle\caches\8.11.1\transforms\6729d72155a93169098bf70077e7d1df\transformed\app-projected-1.4.0\AndroidManifest.xml:26:13-36
+110            android:exported="false"
+110-->[androidx.car.app:app-projected:1.4.0] E:\.gradle\caches\8.11.1\transforms\6729d72155a93169098bf70077e7d1df\transformed\app-projected-1.4.0\AndroidManifest.xml:27:13-37
+111            android:process="" >
+111-->[androidx.car.app:app-projected:1.4.0] E:\.gradle\caches\8.11.1\transforms\6729d72155a93169098bf70077e7d1df\transformed\app-projected-1.4.0\AndroidManifest.xml:28:13-31
+112            <meta-data
+112-->[androidx.car.app:app-projected:1.4.0] E:\.gradle\caches\8.11.1\transforms\6729d72155a93169098bf70077e7d1df\transformed\app-projected-1.4.0\AndroidManifest.xml:31:13-33:89
+113                android:name="androidx.car.app.CarAppMetadataHolderService.CAR_HARDWARE_MANAGER"
+113-->[androidx.car.app:app-projected:1.4.0] E:\.gradle\caches\8.11.1\transforms\6729d72155a93169098bf70077e7d1df\transformed\app-projected-1.4.0\AndroidManifest.xml:32:17-97
+114                android:value="androidx.car.app.hardware.ProjectedCarHardwareManager" />
+114-->[androidx.car.app:app-projected:1.4.0] E:\.gradle\caches\8.11.1\transforms\6729d72155a93169098bf70077e7d1df\transformed\app-projected-1.4.0\AndroidManifest.xml:33:17-86
+115        </service>
+116
+117        <activity
+117-->[androidx.car.app:app:1.4.0] E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\AndroidManifest.xml:31:9-34:75
+118            android:name="androidx.car.app.CarAppPermissionActivity"
+118-->[androidx.car.app:app:1.4.0] E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\AndroidManifest.xml:32:13-69
+119            android:exported="false"
+119-->[androidx.car.app:app:1.4.0] E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\AndroidManifest.xml:33:13-37
+120            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+120-->[androidx.car.app:app:1.4.0] E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\AndroidManifest.xml:34:13-72
+121
+122        <receiver
+122-->[androidx.car.app:app:1.4.0] E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\AndroidManifest.xml:36:9-38:40
+123            android:name="androidx.car.app.notification.CarAppNotificationBroadcastReceiver"
+123-->[androidx.car.app:app:1.4.0] E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\AndroidManifest.xml:37:13-93
+124            android:exported="false" />
+124-->[androidx.car.app:app:1.4.0] E:\.gradle\caches\8.11.1\transforms\602d9d8debcbaf9763809ce3a53d61d1\transformed\app-1.4.0\AndroidManifest.xml:38:13-37
+125
+126        <provider
+126-->[androidx.emoji2:emoji2:1.3.0] E:\.gradle\caches\8.11.1\transforms\5978a484adc7a4a52eb585e20a4ecc6f\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+127            android:name="androidx.startup.InitializationProvider"
+127-->[androidx.emoji2:emoji2:1.3.0] E:\.gradle\caches\8.11.1\transforms\5978a484adc7a4a52eb585e20a4ecc6f\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+128            android:authorities="com.smartev.dashboard.androidx-startup"
+128-->[androidx.emoji2:emoji2:1.3.0] E:\.gradle\caches\8.11.1\transforms\5978a484adc7a4a52eb585e20a4ecc6f\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+129            android:exported="false" >
+129-->[androidx.emoji2:emoji2:1.3.0] E:\.gradle\caches\8.11.1\transforms\5978a484adc7a4a52eb585e20a4ecc6f\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+130            <meta-data
+130-->[androidx.emoji2:emoji2:1.3.0] E:\.gradle\caches\8.11.1\transforms\5978a484adc7a4a52eb585e20a4ecc6f\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+131                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+131-->[androidx.emoji2:emoji2:1.3.0] E:\.gradle\caches\8.11.1\transforms\5978a484adc7a4a52eb585e20a4ecc6f\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+132                android:value="androidx.startup" />
+132-->[androidx.emoji2:emoji2:1.3.0] E:\.gradle\caches\8.11.1\transforms\5978a484adc7a4a52eb585e20a4ecc6f\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+133            <meta-data
+133-->[androidx.lifecycle:lifecycle-process:2.8.6] E:\.gradle\caches\8.11.1\transforms\c24b88a086e90d6ee61868b424fd9812\transformed\lifecycle-process-2.8.6\AndroidManifest.xml:29:13-31:52
+134                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+134-->[androidx.lifecycle:lifecycle-process:2.8.6] E:\.gradle\caches\8.11.1\transforms\c24b88a086e90d6ee61868b424fd9812\transformed\lifecycle-process-2.8.6\AndroidManifest.xml:30:17-78
+135                android:value="androidx.startup" />
+135-->[androidx.lifecycle:lifecycle-process:2.8.6] E:\.gradle\caches\8.11.1\transforms\c24b88a086e90d6ee61868b424fd9812\transformed\lifecycle-process-2.8.6\AndroidManifest.xml:31:17-49
+136            <meta-data
+136-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+137                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+137-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+138                android:value="androidx.startup" />
+138-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+139        </provider>
+140
+141        <receiver
+141-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+142            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+142-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+143            android:directBootAware="false"
+143-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+144            android:enabled="true"
+144-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+145            android:exported="true"
+145-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+146            android:permission="android.permission.DUMP" >
+146-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+147            <intent-filter>
+147-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+148                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+148-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+148-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+149            </intent-filter>
+150            <intent-filter>
+150-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+151                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+151-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+151-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+152            </intent-filter>
+153            <intent-filter>
+153-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+154                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+154-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+154-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+155            </intent-filter>
+156            <intent-filter>
+156-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+157                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+157-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+157-->[androidx.profileinstaller:profileinstaller:1.3.1] E:\.gradle\caches\8.11.1\transforms\ab0f8e06e0b82f85120e6a48130abf37\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+158            </intent-filter>
+159        </receiver>
+160    </application>
+161
+162</manifest>

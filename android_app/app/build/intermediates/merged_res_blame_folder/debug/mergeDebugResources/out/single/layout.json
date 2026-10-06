@@ -1,10 +1,14 @@
 [
     {
-        "merged": "com.smartev.dashboard.app-mergeDebugResources-36:/layout/activity_main.xml",
-        "source": "com.smartev.dashboard.app-main-39:/layout/activity_main.xml"
+        "merged": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-mergeDebugResources-36:\\layout\\activity_main.xml",
+        "source": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-main-39:\\layout\\activity_main.xml"
     },
     {
-        "merged": "com.smartev.dashboard.app-mergeDebugResources-36:/layout/item_bms_cell.xml",
-        "source": "com.smartev.dashboard.app-main-39:/layout/item_bms_cell.xml"
+        "merged": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-mergeDebugResources-36:\\layout\\item_bms_cell.xml",
+        "source": "E:\\.gradle\\daemon\\8.11.1\\com.smartev.dashboard.app-main-39:\\layout\\item_bms_cell.xml"
+    },
+    {
+        "merged": "com.smartev.dashboard.app-mergeDebugResources-36:/layout/activity_main.xml",
+        "source": "com.smartev.dashboard.app-main-39:/layout/activity_main.xml"
     }
 ]

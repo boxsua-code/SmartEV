@@ -430,6 +430,67 @@
                 android:textSize="15sp"
                 android:layout_marginBottom="8dp" />
 
+            <!-- ANT BMS Bluetooth BLE Connection Card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="KẾT NỐI KHÔNG DÂY PIN ANT BMS (BLUETOOTH)"
+                    android:textColor="@color/ev_cyan"
+                    android:textStyle="bold"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvAntBleStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Trạng thái: Chưa kết nối pin ANT"
+                    android:textColor="@color/ev_red"
+                    android:textStyle="bold"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvAntBleDeviceName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Thiết bị: Chưa chọn thiết bị pin"
+                    android:textColor="@color/text_gray"
+                    android:textSize="11sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnScanAntBms"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="🔍 TÌM KIẾM BLE PIN ANT"
+                        android:textSize="11sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnDisconnectAntBms"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        android:text="NGẮT PIN"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </LinearLayout>
+
             <!-- BMS Protocol Selection Card -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -549,7 +610,7 @@
                 android:layout_marginTop="8dp" />
         </LinearLayout>
 
-        <!-- TAB 3: VEHICLE SETTINGS (NVS FLASH) -->
+        <!-- TAB 3: VOTOL-EM-V3 & VOTOLAIO ADVANCED CONTROLLER SETTINGS (4 PAGES) -->
         <ScrollView
             android:id="@+id/viewSettings"
             android:layout_width="match_parent"
@@ -565,190 +626,1198 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/settings_title"
+                    android:text="CÀI ĐẶT THÔNG SỐ IC VOTOL (VOTOL-EM-V3 / AIO)"
                     android:textColor="@color/ev_cyan"
                     android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="12dp" />
+                    android:textSize="15sp" />
 
-                <!-- Đường kính lốp -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/settings_tire_desc"
+                    android:text="Phần mềm cấu hình chuyên sâu điều tốc Votol EM Series"
                     android:textColor="@color/text_gray"
-                    android:textSize="13sp" />
+                    android:textSize="11sp"
+                    android:layout_marginBottom="8dp" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etTireSize"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:text="472" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Số cặp cực động cơ -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/settings_poles_desc"
-                    android:textColor="@color/text_gray"
-                    android:textSize="13sp" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etPolePairs"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:text="5" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Giới hạn dòng Bus (A) -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/settings_bus_limit"
-                    android:textColor="@color/text_gray"
-                    android:textSize="13sp" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etBusCurrent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:text="150" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Giới hạn dòng Pha (A) -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/settings_phase_limit"
-                    android:textColor="@color/text_gray"
-                    android:textSize="13sp" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etPhaseCurrent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:text="350" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Phanh tái sinh Regen -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/settings_regen"
-                    android:textColor="@color/text_gray"
-                    android:textSize="13sp" />
-
-                <RadioGroup
-                    android:id="@+id/rgRegen"
+                <!-- 4 TAB NAVIGATION BAR (PAGE 1 / PAGE 2 / PAGE 3 / PAGE 4) -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="12dp">
+                    android:background="@drawable/bg_card"
+                    android:padding="4dp"
+                    android:layout_marginBottom="10dp">
 
-                    <RadioButton
-                        android:id="@+id/rbRegen0"
-                        android:layout_width="wrap_content"
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnTabVotol1"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Tắt"
-                        android:textColor="@color/text_white" />
+                        android:layout_weight="1"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:padding="4dp"
+                        android:text="PAGE 1\nNguồn &amp; Ga"
+                        android:textSize="10sp"
+                        android:backgroundTint="@color/ev_cyan"
+                        android:textColor="@color/bg_dark"
+                        android:textStyle="bold" />
 
-                    <RadioButton
-                        android:id="@+id/rbRegen1"
-                        android:layout_width="wrap_content"
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnTabVotol2"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Nhẹ"
-                        android:checked="true"
-                        android:textColor="@color/text_white" />
+                        android:layout_weight="1"
+                        android:layout_marginStart="2dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:padding="4dp"
+                        android:text="PAGE 2\nCấp Số"
+                        android:textSize="10sp"
+                        android:backgroundTint="@color/card_bg"
+                        android:textColor="@color/text_gray" />
 
-                    <RadioButton
-                        android:id="@+id/rbRegen2"
-                        android:layout_width="wrap_content"
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnTabVotol3"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Vừa"
-                        android:textColor="@color/text_white" />
+                        android:layout_weight="1"
+                        android:layout_marginStart="2dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:padding="4dp"
+                        android:text="PAGE 3\nĐộng Cơ"
+                        android:textSize="10sp"
+                        android:backgroundTint="@color/card_bg"
+                        android:textColor="@color/text_gray" />
 
-                    <RadioButton
-                        android:id="@+id/rbRegen3"
-                        android:layout_width="wrap_content"
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnTabVotol4"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Mạnh"
-                        android:textColor="@color/text_white" />
-                </RadioGroup>
+                        android:layout_weight="1"
+                        android:layout_marginStart="2dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:padding="4dp"
+                        android:text="PAGE 4\nCổng &amp; Xe"
+                        android:textSize="10sp"
+                        android:backgroundTint="@color/card_bg"
+                        android:textColor="@color/text_gray" />
+                </LinearLayout>
 
-                <!-- Chế độ lái xe -->
-                <TextView
-                    android:layout_width="wrap_content"
+                <!-- ==================== CONTAINER PAGE 1: BASIC & THROTTLE ==================== -->
+                <LinearLayout
+                    android:id="@+id/layoutVotolPage1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/settings_drive_mode"
-                    android:textColor="@color/text_gray"
-                    android:textSize="13sp" />
+                    android:orientation="vertical"
+                    android:visibility="visible">
 
-                <RadioGroup
-                    android:id="@+id/rgDriveMode"
+                    <!-- Basic Settings Card -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card"
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Basic Settings (Cài Đặt Nguồn &amp; Dòng Điện)"
+                            android:textColor="@color/ev_cyan"
+                            android:textStyle="bold"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Model IC: EM-150 / EM-100 / EM-50"
+                            android:textColor="@color/text_white"
+                            android:textSize="12sp"
+                            android:layout_marginTop="6dp" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etVotolModel"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="EM-150"
+                                android:textSize="13sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="6dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Quá áp (Overvoltage V)"
+                                    android:textColor="@color/text_gray"
+                                    android:textSize="11sp" />
+                                <EditText
+                                    android:id="@+id/etOvervoltage"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="numberDecimal"
+                                    android:text="88.0"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/text_white" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Cắt áp thấp (Undervoltage V)"
+                                    android:textColor="@color/text_gray"
+                                    android:textSize="11sp" />
+                                <EditText
+                                    android:id="@+id/etUndervoltage"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="numberDecimal"
+                                    android:text="60.0"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/text_white" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="6dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Cắt áp mềm (Soft Undervolt V)"
+                                    android:textColor="@color/text_gray"
+                                    android:textSize="11sp" />
+                                <EditText
+                                    android:id="@+id/etSoftUndervoltage"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="numberDecimal"
+                                    android:text="62.0"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/text_white" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Độ lệch tụt áp (Variation)"
+                                    android:textColor="@color/text_gray"
+                                    android:textSize="11sp" />
+                                <EditText
+                                    android:id="@+id/etUndervoltageVariation"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="numberDecimal"
+                                    android:text="2.0"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/text_white" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="6dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Dòng xả bình (Busbar A)"
+                                    android:textColor="@color/text_gray"
+                                    android:textSize="11sp" />
+                                <EditText
+                                    android:id="@+id/etBusCurrent"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="number"
+                                    android:text="150"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/text_white" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Dòng pha (Phase current A)"
+                                    android:textColor="@color/text_gray"
+                                    android:textSize="11sp" />
+                                <EditText
+                                    android:id="@+id/etPhaseCurrent"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="number"
+                                    android:text="350"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/text_white" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Throttle Voltage Set Card -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card"
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Throttle Voltage Set (Điện Áp Tay Ga Max 5.5V)"
+                            android:textColor="@color/ev_cyan"
+                            android:textStyle="bold"
+                            android:textSize="13sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="6dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Bảo vệ áp thấp (Low protect V)"
+                                    android:textColor="@color/text_gray"
+                                    android:textSize="11sp" />
+                                <EditText
+                                    android:id="@+id/etThrottleLowProtect"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="numberDecimal"
+                                    android:text="0.80"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/text_white" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Bắt đầu ga (Start voltage V)"
+                                    android:textColor="@color/text_gray"
+                                    android:textSize="11sp" />
+                                <EditText
+                                    android:id="@+id/etThrottleStart"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="numberDecimal"
+                                    android:text="1.15"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/text_white" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="6dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Hết ga (The end of the V)"
+                                    android:textColor="@color/text_gray"
+                                    android:textSize="11sp" />
+                                <EditText
+                                    android:id="@+id/etThrottleEnd"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="numberDecimal"
+                                    android:text="3.80"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/text_white" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Bảo vệ áp cao (High protect V)"
+                                    android:textColor="@color/text_gray"
+                                    android:textSize="11sp" />
+                                <EditText
+                                    android:id="@+id/etThrottleHighProtect"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="numberDecimal"
+                                    android:text="4.50"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/text_white" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Start Setting Card -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card"
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Start Setting (Mô-men Đề-pa Khởi Động)"
+                            android:textColor="@color/ev_cyan"
+                            android:textStyle="bold"
+                            android:textSize="13sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="6dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Start torque"
+                                    android:textColor="@color/text_gray"
+                                    android:textSize="11sp" />
+                                <EditText
+                                    android:id="@+id/etStartTorque"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="number"
+                                    android:text="50"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/text_white" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Combinative torque"
+                                    android:textColor="@color/text_gray"
+                                    android:textSize="11sp" />
+                                <EditText
+                                    android:id="@+id/etCombinativeTorque"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="number"
+                                    android:text="80"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/text_white" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="6dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Rate of rise (Độ dốc tăng)"
+                                    android:textColor="@color/text_gray"
+                                    android:textSize="11sp" />
+                                <EditText
+                                    android:id="@+id/etRateOfRise"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="number"
+                                    android:text="10"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/text_white" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Rate of decline (Độ dốc giảm)"
+                                    android:textColor="@color/text_gray"
+                                    android:textSize="11sp" />
+                                <EditText
+                                    android:id="@+id/etRateOfDecline"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="number"
+                                    android:text="15"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/text_white" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- ==================== CONTAINER PAGE 2: MODES & SPEED ==================== -->
+                <LinearLayout
+                    android:id="@+id/layoutVotolPage2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <!-- Sport Mode Setup Card -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card"
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sport Mode Setup (Cấu Hình Chế Độ Thể Thao)"
+                            android:textColor="@color/ev_cyan"
+                            android:textStyle="bold"
+                            android:textSize="13sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="6dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Current-Limiting (A)"
+                                    android:textColor="@color/text_gray"
+                                    android:textSize="11sp" />
+                                <EditText
+                                    android:id="@+id/etSportCurrent"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="number"
+                                    android:text="180"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/text_white" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Flux-Weakening (Mở tua)"
+                                    android:textColor="@color/text_gray"
+                                    android:textSize="11sp" />
+                                <EditText
+                                    android:id="@+id/etSportFlux"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="number"
+                                    android:text="50"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/text_white" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <CheckBox
+                            android:id="@+id/cbSportAutoLogout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Automatic logout enablers (Tự động thoát Sport)"
+                            android:textColor="@color/text_white"
+                            android:checked="true"
+                            android:textSize="12sp"
+                            android:layout_marginTop="4dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="4dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Logout time (Giây duy trì)"
+                                    android:textColor="@color/text_gray"
+                                    android:textSize="11sp" />
+                                <EditText
+                                    android:id="@+id/etSportLogoutTime"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="number"
+                                    android:text="15"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/text_white" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Recovery time (Giây hồi)"
+                                    android:textColor="@color/text_gray"
+                                    android:textSize="11sp" />
+                                <EditText
+                                    android:id="@+id/etSportRecoveryTime"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="number"
+                                    android:text="10"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/text_white" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Three-Speed Settings Card -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card"
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Three-Speed (Cài Đặt 3 Cấp Số Chạy)"
+                            android:textColor="@color/ev_cyan"
+                            android:textStyle="bold"
+                            android:textSize="13sp" />
+
+                        <!-- Low Speed -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="6dp">
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="wrap_content"
+                                android:text="Low (%):"
+                                android:textColor="@color/text_white"
+                                android:textStyle="bold"
+                                android:textSize="12sp" />
+                            <EditText
+                                android:id="@+id/etLowSpeedRatio"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="Tốc độ %"
+                                android:inputType="number"
+                                android:text="45"
+                                android:textSize="13sp"
+                                android:textColor="@color/text_white" />
+                            <EditText
+                                android:id="@+id/etLowCurrentRatio"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="6dp"
+                                android:hint="Dòng %"
+                                android:inputType="number"
+                                android:text="50"
+                                android:textSize="13sp"
+                                android:textColor="@color/text_white" />
+                        </LinearLayout>
+
+                        <!-- Mid Speed -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="4dp">
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="wrap_content"
+                                android:text="Mid (%):"
+                                android:textColor="@color/text_white"
+                                android:textStyle="bold"
+                                android:textSize="12sp" />
+                            <EditText
+                                android:id="@+id/etMidSpeedRatio"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="Tốc độ %"
+                                android:inputType="number"
+                                android:text="75"
+                                android:textSize="13sp"
+                                android:textColor="@color/text_white" />
+                            <EditText
+                                android:id="@+id/etMidCurrentRatio"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="6dp"
+                                android:hint="Dòng %"
+                                android:inputType="number"
+                                android:text="75"
+                                android:textSize="13sp"
+                                android:textColor="@color/text_white" />
+                        </LinearLayout>
+
+                        <!-- High Speed -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="4dp">
+                            <TextView
+                                android:layout_width="70dp"
+                                android:layout_height="wrap_content"
+                                android:text="High (%):"
+                                android:textColor="@color/text_white"
+                                android:textStyle="bold"
+                                android:textSize="12sp" />
+                            <EditText
+                                android:id="@+id/etHighSpeedRatio"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="Tốc độ %"
+                                android:inputType="number"
+                                android:text="100"
+                                android:textSize="13sp"
+                                android:textColor="@color/text_white" />
+                            <EditText
+                                android:id="@+id/etHighCurrentRatio"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="6dp"
+                                android:hint="Dòng %"
+                                android:inputType="number"
+                                android:text="100"
+                                android:textSize="13sp"
+                                android:textColor="@color/text_white" />
+                        </LinearLayout>
+
+                        <!-- Button / Switch 3 speed -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Loại điều khiển chuyển số:"
+                            android:textColor="@color/text_gray"
+                            android:textSize="11sp"
+                            android:layout_marginTop="8dp" />
+                        <RadioGroup
+                            android:id="@+id/rgThreeSpeedType"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <RadioButton
+                                android:id="@+id/rbButton3Speed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                android:text="Button 3 speed (Nút nhấn)"
+                                android:textColor="@color/text_white"
+                                android:textSize="11sp" />
+                            <RadioButton
+                                android:id="@+id/rbSwitch3Speed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Switch 3 speed (Gạt nấc)"
+                                android:textColor="@color/text_white"
+                                android:textSize="11sp"
+                                android:layout_marginStart="8dp" />
+                        </RadioGroup>
+
+                        <!-- Soft Start -->
+                        <CheckBox
+                            android:id="@+id/cbSoftStart"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Soft start enabled (Khởi động êm ái)"
+                            android:textColor="@color/text_white"
+                            android:checked="true"
+                            android:textSize="12sp"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- ==================== CONTAINER PAGE 3: MOTOR & SENSORS ==================== -->
+                <LinearLayout
+                    android:id="@+id/layoutVotolPage3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <!-- Motor Setting Card -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card"
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Motor Setting (Cài Đặt Động Cơ)"
+                            android:textColor="@color/ev_cyan"
+                            android:textStyle="bold"
+                            android:textSize="13sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="6dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Số cặp cực (Pole pairs)"
+                                    android:textColor="@color/text_gray"
+                                    android:textSize="11sp" />
+                                <EditText
+                                    android:id="@+id/etPolePairs"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="number"
+                                    android:text="5"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/text_white" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Góc lệch Hall shift Angle"
+                                    android:textColor="@color/text_gray"
+                                    android:textSize="11sp" />
+                                <EditText
+                                    android:id="@+id/etHallShiftAngle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="numberSigned"
+                                    android:text="-60"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/text_white" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <CheckBox
+                            android:id="@+id/cbExchangeHall"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="exchange hall wire color Yellow-Blue (Đổi Hall Vàng-Xanh)"
+                            android:textColor="@color/text_white"
+                            android:textSize="11sp"
+                            android:layout_marginTop="4dp" />
+
+                        <CheckBox
+                            android:id="@+id/cbExchangePhase"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="exchange phase wire color Blue-Green (Đổi Pha Xanh-Lá)"
+                            android:textColor="@color/text_white"
+                            android:textSize="11sp" />
+
+                        <!-- Motor Type -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Kiểu động cơ:"
+                            android:textColor="@color/text_gray"
+                            android:textSize="11sp"
+                            android:layout_marginTop="6dp" />
+                        <RadioGroup
+                            android:id="@+id/rgMotorType"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <RadioButton
+                                android:id="@+id/rbSurfaceMount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                android:text="surface-mount"
+                                android:textColor="@color/text_white"
+                                android:textSize="11sp" />
+                            <RadioButton
+                                android:id="@+id/rbVType"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="V-type"
+                                android:textColor="@color/text_white"
+                                android:textSize="11sp"
+                                android:layout_marginStart="12dp" />
+                        </RadioGroup>
+                    </LinearLayout>
+
+                    <!-- Safety & Braking Card -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card"
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="An Toàn, Số Lùi &amp; Phanh EBS"
+                            android:textColor="@color/ev_cyan"
+                            android:textStyle="bold"
+                            android:textSize="13sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="6dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Giới hạn tốc độ lùi (%):"
+                                    android:textColor="@color/text_gray"
+                                    android:textSize="11sp" />
+                                <EditText
+                                    android:id="@+id/etReverseSpeedLimit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="number"
+                                    android:text="25"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/text_white" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Tỉ lệ phanh EBS ratio (%):"
+                                    android:textColor="@color/text_gray"
+                                    android:textSize="11sp" />
+                                <EditText
+                                    android:id="@+id/etEbsRatio"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="number"
+                                    android:text="30"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/text_white" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <CheckBox
+                            android:id="@+id/cbLowBrake"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Low brake (Phanh ngắt mức thấp)"
+                            android:textColor="@color/text_white"
+                            android:checked="true"
+                            android:textSize="12sp"
+                            android:layout_marginTop="4dp" />
+
+                        <CheckBox
+                            android:id="@+id/cbSecureBoot"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Secure boot (Bảo vệ khởi động an toàn)"
+                            android:textColor="@color/text_white"
+                            android:checked="true"
+                            android:textSize="12sp" />
+
+                        <CheckBox
+                            android:id="@+id/cbCruise"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Cruise (Ga tự động hành trình)"
+                            android:textColor="@color/text_white"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- ==================== CONTAINER PAGE 4: PORTS & DISPLAY ==================== -->
+                <LinearLayout
+                    android:id="@+id/layoutVotolPage4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <!-- Port Functions Card -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card"
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Port Settings (Cấu Hình Cổng Chức Năng I/O)"
+                            android:textColor="@color/ev_cyan"
+                            android:textStyle="bold"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Cổng PD0 / PB3 / PA0 / PB2 / PC14 / PA11:"
+                            android:textColor="@color/text_gray"
+                            android:textSize="11sp"
+                            android:layout_marginTop="4dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="• Cổng Phanh Điện: Chân Low/High Brake\n• Cổng Số Lùi: Chân Reverse R (Active Low)\n• Cổng Parking: Chân Nút P / Chống điện\n• Cổng Khóa Chống Trộm: Anti-theft Lock"
+                            android:textColor="@color/text_white"
+                            android:textSize="12sp"
+                            android:lineSpacingExtra="3dp"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+
+                    <!-- Vehicle Specs & Display Card -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card"
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Vehicle Specs &amp; Display (Thông Số Xe &amp; OLED)"
+                            android:textColor="@color/ev_cyan"
+                            android:textStyle="bold"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Chu vi bánh xe (mm) - Ví dụ lốp 120/70-12 là 472:"
+                            android:textColor="@color/text_gray"
+                            android:textSize="11sp"
+                            android:layout_marginTop="6dp" />
+
+                        <EditText
+                            android:id="@+id/etTireSize"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:text="472"
+                            android:textSize="13sp"
+                            android:textColor="@color/text_white" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tỉ số truyền động (Gear Ratio - Hub = 1.0):"
+                            android:textColor="@color/text_gray"
+                            android:textSize="11sp"
+                            android:layout_marginTop="6dp" />
+
+                        <EditText
+                            android:id="@+id/etGearRatio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:text="1.0"
+                            android:textSize="13sp"
+                            android:textColor="@color/text_white" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Độ sáng màn hình OLED xe SSD1306 (10% - 100%):"
+                            android:textColor="@color/text_gray"
+                            android:textSize="11sp"
+                            android:layout_marginTop="6dp" />
+
+                        <EditText
+                            android:id="@+id/etOledBrightness"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:text="100"
+                            android:textSize="13sp"
+                            android:textColor="@color/text_white" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- ==================== ACTION BUTTONS (READ / SAVE / RESET) ==================== -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="16dp">
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="24dp">
 
-                    <RadioButton
-                        android:id="@+id/rbModeEco"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Eco"
-                        android:textColor="@color/text_white" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnReadSettings"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:text="📥 ĐỌC IC"
+                        android:textSize="11sp"
+                        android:backgroundTint="@color/card_bg"
+                        android:textColor="@color/ev_cyan" />
 
-                    <RadioButton
-                        android:id="@+id/rbModeNormal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Normal"
-                        android:checked="true"
-                        android:textColor="@color/text_white" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSaveSettings"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1.2"
+                        android:layout_marginStart="6dp"
+                        android:text="💾 LƯU XUỐNG IC"
+                        android:textSize="11sp"
+                        android:backgroundTint="@color/ev_cyan"
+                        android:textColor="@color/bg_dark"
+                        android:textStyle="bold" />
 
-                    <RadioButton
-                        android:id="@+id/rbModeSport"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Sport"
-                        android:textColor="@color/text_white" />
-                </RadioGroup>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnResetSettings"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        android:text="🔄 MẶC ĐỊNH"
+                        android:textSize="11sp"
+                        android:backgroundTint="@color/card_bg"
+                        android:textColor="@color/text_gray" />
+                </LinearLayout>
 
-                <!-- Nút Lưu NVS Flash -->
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnSaveSettings"
-                    android:layout_width="match_parent"
-                    android:layout_height="54dp"
-                    android:text="@string/btn_save_settings"
-                    android:backgroundTint="@color/ev_cyan"
-                    android:textColor="@color/bg_dark"
-                    android:textStyle="bold"
-                    android:textSize="15sp"
-                    android:layout_marginBottom="24dp" />
             </LinearLayout>
         </ScrollView>
 
@@ -820,4 +1889,61 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2️⃣ Nhấn dấu 3 chấm góc trên phải > 'Cài đặt cho nhà phát triển' > Tích chọn 'Nguồn không xác đ�
+                        android:text="2️⃣ Nhấn dấu 3 chấm góc trên phải > 'Cài đặt cho nhà phát triển' > Tích chọn 'Nguồn không xác định' (Unknown sources) và đặt 'Chế độ ứng dụng' = Nhà phát triển (Developer)."
+                        android:textColor="@color/text_white"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="6dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3️⃣ Quay lại màn hình Cài đặt Android Auto > Vào 'Tùy chỉnh trình khởi chạy' (Customize launcher) > TÍCH CHỌN [Smart EV Dashboard] (Mặc định Android Auto luôn bỏ tích app cài ngoài)."
+                        android:textColor="@color/ev_orange"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="6dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4️⃣ Cắm lại cáp USB vào xe -> Biểu tượng Smart EV Dashboard sẽ xuất hiện ngay lập tức trên màn hình xe hơi!"
+                        android:textColor="@color/ev_cyan"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_card"
+                    android:padding="16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/perm_notification_title"
+                        android:textColor="@color/text_white"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/perm_notification_desc"
+                        android:textColor="@color/text_gray"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="10dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnGrantNotification"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_grant_notification" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

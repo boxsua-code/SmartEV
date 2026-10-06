@@ -53,18 +53,75 @@ data class BmsData(
 )
 
 /**
- * Cài đặt chuyên sâu xe điện lưu trong ESP32 NVS Flash
+ * Cài đặt chuyên sâu thông số IC Votol chuẩn VOTOL-EM-V3 & VotolAIO (4 Trang)
  */
 data class VehicleSettings(
-    var tireCircumferenceMm: Int = 472, // Lốp 120/70-12 (~472mm bán kính/chu vi tùy chỉnh)
-    var polePairs: Int = 5,             // Số cặp cực động cơ QS / Yuma
-    var busCurrentLimitA: Int = 150,    // Giới hạn dòng bình ắc quy / pin
-    var phaseCurrentLimitA: Int = 350,  // Giới hạn dòng pha cực đại
-    var regenBrakeLevel: Int = 1,       // 0: Tắt, 1: Nhẹ, 2: Vừa, 3: Mạnh
-    var speedLimitMode1: Int = 45,      // % giới hạn số 1 (Eco)
-    var speedLimitMode2: Int = 75,      // % giới hạn số 2 (Normal)
-    var speedLimitMode3: Int = 100,     // % giới hạn số 3 (Sport)
-    var driveMode: Int = 1              // 0: Eco, 1: Normal, 2: Sport
+    // PAGE 1: Basic & Power Settings
+    var votolModel: String = "EM-150",
+    var batteryNominalVoltage: Int = 72,
+    var overvoltageV: Float = 88.0f,
+    var undervoltageV: Float = 60.0f,
+    var softUndervoltageV: Float = 62.0f,
+    var undervoltageVariationV: Float = 2.0f,
+    var busCurrentLimitA: Int = 150,
+    var phaseCurrentLimitA: Int = 350,
+    var throttleLowProtectV: Float = 0.8f,
+    var throttleStartV: Float = 1.15f,
+    var throttleEndV: Float = 3.80f,
+    var throttleHighProtectV: Float = 4.5f,
+    var startTorque: Int = 50,
+    var combinativeTorque: Int = 80,
+    var rateOfRise: Int = 10,
+    var rateOfDecline: Int = 15,
+
+    // PAGE 2: Modes & Speed Settings
+    var sportCurrentLimitA: Int = 180,
+    var sportFluxWeakening: Int = 50,
+    var sportAutoLogout: Boolean = true,
+    var sportLogoutTimeS: Int = 15,
+    var sportRecoveryTimeS: Int = 10,
+    var hhcEnable: Boolean = false,
+    var hdcEnable: Boolean = false,
+    var hdcLowestSpeed: Int = 15,
+    var speedLimitEnable: Boolean = false,
+    var speedLimitRatio: Int = 100,
+    var fluxWeakeningCompensation: Int = 0,
+    var lowSpeedRatio: Int = 45,
+    var lowCurrentRatio: Int = 50,
+    var midSpeedRatio: Int = 75,
+    var midCurrentRatio: Int = 75,
+    var highSpeedRatio: Int = 100,
+    var highCurrentRatio: Int = 100,
+    var midFluxWeakening: Int = 0,
+    var highFluxWeakening: Int = 30,
+    var threeSpeedType: Int = 0, // 0: Button, 1: Switch
+    var defaultGear: Int = 1,     // 0: Low, 1: Mid, 2: High
+    var softStartEnable: Boolean = true,
+    var softStartGrade: Int = 1,
+
+    // PAGE 3: Motor & Sensor Settings
+    var polePairs: Int = 5,
+    var exchangeHallYellowBlue: Boolean = false,
+    var exchangePhaseBlueGreen: Boolean = false,
+    var motorType: Int = 0, // 0: Surface-mount, 1: V-type
+    var hallShiftAngle: Int = -60,
+    var reverseSpeedLimitRatio: Int = 25,
+    var ebsRatio: Int = 30,
+    var lowBrakeEnable: Boolean = true,
+    var secureBoot: Boolean = true,
+    var speedometerType: Int = 0, // 0: One-Lin, 1: Hall
+    var movingVehicleBooster: Boolean = false,
+    var boosterSpeedRatio: Int = 15,
+    var boosterTorque: Int = 20,
+    var cruiseControl: Boolean = false,
+    var doubleVoltageAutoId: Boolean = false,
+
+    // PAGE 4: Ports & Vehicle Specs
+    var tireCircumferenceMm: Int = 472,
+    var gearRatio: Float = 1.0f,
+    var oledBrightness: Int = 100,
+    var regenBrakeLevel: Int = 1,
+    var driveMode: Int = 1
 )
 
 /**
