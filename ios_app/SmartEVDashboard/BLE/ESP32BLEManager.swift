@@ -132,7 +132,7 @@ public class ESP32BLEManager: NSObject, ObservableObject, CBCentralManagerDelega
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         let name = peripheral.name ?? advertisementData[CBAdvertisementDataLocalNameKey] as? String ?? ""
         
-        let isTarget = name.contains("SmartDash") || name.contains("ESP32") || name.contains("JAMFOX") || name.contains("Votol")
+        let isTarget = name.contains("SmartDash") || name.contains("ESP32") || name.contains("JAMFOX") || name.contains("Votol") || name.contains("xe_TCH") || name.contains("TCH") || name.contains("Smart")
         
         if isTarget {
             print("[BLE iOS] Phát hiện thiết bị: \(name) (RSSI: \(RSSI))")

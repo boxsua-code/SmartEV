@@ -19,27 +19,28 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Build Xcode Project
+      - name: Build and Archive Xcode Project
         run: |
-          mkdir -p "${{ github.workspace }}/build/Release-iphoneos"
+          mkdir -p "${{ github.workspace }}/build"
           cd ios_app/SmartEVDashboard
-          xcodebuild build \
+          xcodebuild archive \
                      -project SmartEVDashboard.xcodeproj \
                      -scheme SmartEVDashboard \
                      -sdk iphoneos \
                      -configuration Release \
                      -destination 'generic/platform=iOS' \
+                     -archivePath "${{ github.workspace }}/build/SmartEVDashboard.xcarchive" \
                      CODE_SIGN_IDENTITY="" \
                      CODE_SIGNING_REQUIRED=NO \
                      CODE_SIGNING_ALLOWED=NO \
-                     AD_HOC_CODE_SIGNING_ALLOWED=YES \
-                     CONFIGURATION_BUILD_DIR="${{ github.workspace }}/build/Release-iphoneos" \
-                     BUILD_DIR="${{ github.workspace }}/build" 2>&1 | tee "${{ github.workspace }}/build_log.txt"
+                     AD_HOC_CODE_SIGNING_ALLOWED=YES
 
       - name: Package .app into .ipa File
         run: |
-          echo "=== Locating Built .app ==="
-          APP_PATH=$(find "${{ github.workspace }}/build" -name "SmartEVDashboard.app" | head -n 1)
+          APP_PATH="${{ github.workspace }}/build/SmartEVDashboard.xcarchive/Products/Applications/SmartEVDashboard.app"
+          if [ ! -d "$APP_PATH" ]; then
+            APP_PATH=$(find "${{ github.workspace }}/build" -name "SmartEVDashboard.app" | head -n 1)
+          fi
           echo "Found app at: $APP_PATH"
           ls -la "$APP_PATH"
           
