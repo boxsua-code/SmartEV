@@ -28,7 +28,7 @@ public class CarPlayManager: NSObject {
         // Grid Item 1: Tốc độ (Speed)
         let speedItem = CPGridButton(
             titleVariants: ["\(Int(currentTelemetry.spd)) km/h", "Tốc độ: \(Int(currentTelemetry.spd)) km/h"],
-            image: UIImage(systemName: "gauge.with.dots.needle.bottom.50percent") ?? UIImage(),
+            image: UIImage(systemName: "speedometer") ?? UIImage(),
             handler: { _ in }
         )
         
@@ -78,7 +78,7 @@ public class CarPlayManager: NSObject {
         
         let speedItem = CPGridButton(
             titleVariants: ["\(Int(telemetry.spd)) km/h", "Tốc độ: \(Int(telemetry.spd)) km/h"],
-            image: UIImage(systemName: "gauge.with.dots.needle.bottom.50percent") ?? UIImage(),
+            image: UIImage(systemName: "speedometer") ?? UIImage(),
             handler: { _ in }
         )
         
