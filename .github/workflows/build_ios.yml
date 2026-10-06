@@ -16,7 +16,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Build Xcode Project for iOS
+      - name: Build Xcode Project
         run: |
           cd ios_app/SmartEVDashboard
           xcodebuild build \
@@ -25,23 +25,29 @@ jobs:
                      -scheme SmartEVDashboard \
                      -sdk iphonesimulator \
                      -configuration Release \
-                     -destination 'generic/platform=iOS Simulator' \
                      CODE_SIGN_IDENTITY="" \
                      CODE_SIGNING_REQUIRED=NO \
-                     CODE_SIGNING_ALLOWED=NO \
-                     BUILD_DIR=../../build
+                     CODE_SIGNING_ALLOWED=NO 2>&1 | tee xcodebuild.log
 
       - name: Package .app into .ipa File
         run: |
           mkdir -p build/Payload
-          cp -r build/Release-iphonesimulator/SmartEVDashboard.app build/Payload/
+          APP_DIR=$(find ios_app/SmartEVDashboard/build -name "SmartEVDashboard.app" -type d | head -n 1)
+          if [ -z "$APP_DIR" ]; then
+            APP_DIR=$(find ~/Library/Developer/Xcode/DerivedData -name "SmartEVDashboard.app" -type d | head -n 1)
+          fi
+          echo "Found app at: $APP_DIR"
+          cp -r "$APP_DIR" build/Payload/
           cd build
           zip -r SmartEVDashboard.ipa Payload
           echo "✅ Đã tạo xong file SmartEVDashboard.ipa!"
 
       - name: Upload .ipa Artifact to GitHub
         uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: SmartEVDashboard-iOS-IPA
-          path: build/SmartEVDashboard.ipa
+          path: |
+            build/SmartEVDashboard.ipa
+            ios_app/SmartEVDashboard/xcodebuild.log
           retention-days: 30
